@@ -1,4 +1,3 @@
 name: Adrienne Slaughter, Awesome Dev
 markdown: kramdown
-permalink: /cs5520_project/:year/:month/:day/:title.html
 theme: jekyll-theme-tactile
