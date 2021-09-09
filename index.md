@@ -3,6 +3,17 @@ layout: default
 title: Adrienne Slaughter, Horrible Cop
 ---
 
+## Posts
+
+<ul class="posts">
+
+	  {% for post in site.posts %}
+	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% endfor %}
+	</ul>
+  
+  
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/ahope/cs5520_project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
