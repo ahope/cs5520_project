@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Adrienne Slaughter, Horrible Cop
+title: Adrienne Slaughter, Something to be said
 ---
 
 ## Posts
