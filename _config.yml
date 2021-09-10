@@ -3,3 +3,5 @@ markdown: kramdown
 permalink: /cs5520_project/:year/:month/:day/:title
 theme: jekyll-theme-tactile
 timezone: 'America/Los_Angeles'
+
+future: true
