@@ -1,7 +1,11 @@
 ---
 layout: default
-title: Adrienne Slaughter, Something to be said
+title: Mobile App Design and Development, Fall 2021
 ---
+
+This is the website I'll use to make it easy to find code snippets and various resources for class. 
+
+Information about assignments and assignment submission is on Canvas; this is more for examples from class and other interesting things. 
 
 ## Posts
 
@@ -12,23 +16,12 @@ title: Adrienne Slaughter, Something to be said
 	  {% endfor %}
 	</ul>
   
-  
+# Mobile Design and Development
 
-## Welcome to GitHub Pages
+My goals for this class: 
 
-You can use the [editor on GitHub](https://github.com/ahope/cs5520_project/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+* **Help you develop as an engineer.** You may or may not continue on as a mobile developer, but in any case, there 
+are many ways you can develop as an engineer by learning mobile development. Part of it is pure technical details: becoming 
+more comfortable with Github, learning how to use SDKs and frameworks in your projects. 
+* **Help you communicate as a student and developer.** 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-something new
