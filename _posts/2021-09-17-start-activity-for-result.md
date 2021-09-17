@@ -16,20 +16,20 @@ When creating the Activity, create an ```ActivityResultLauncher```, which result
 
 ```java
 someActivityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            // Here, no request code
-                            Intent data = result.getData();
-                            String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
-                            mReplyHeadTextView.setVisibility(View.VISIBLE);
-                            mReplyTextView.setText(reply);
-                            mReplyTextView.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
+    new ActivityResultContracts.StartActivityForResult(),
+    new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                // Here, no request code
+                Intent data = result.getData();
+                String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(reply);
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
+    });
 ```
 
 You'll see I put the code to update the text views in the ```onActivityResult``` anonymous method definition. 
@@ -71,20 +71,20 @@ public class MainActivity extends AppCompatActivity {
         mReplyTextView = findViewById(R.id.text_message_reply);
 
         someActivityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            // Here, no request code
-                            Intent data = result.getData();
-                            String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
-                            mReplyHeadTextView.setVisibility(View.VISIBLE);
-                            mReplyTextView.setText(reply);
-                            mReplyTextView.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
+          new ActivityResultContracts.StartActivityForResult(),
+          new ActivityResultCallback<ActivityResult>() {
+              @Override
+              public void onActivityResult(ActivityResult result) {
+                  if (result.getResultCode() == Activity.RESULT_OK) {
+                      // Here, no request code
+                      Intent data = result.getData();
+                      String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                      mReplyHeadTextView.setVisibility(View.VISIBLE);
+                      mReplyTextView.setText(reply);
+                      mReplyTextView.setVisibility(View.VISIBLE);
+                  }
+              }
+          });
     }
 
     public void launchSecondActivity(View view) {
