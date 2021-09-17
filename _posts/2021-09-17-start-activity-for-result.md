@@ -5,7 +5,7 @@ title: Start Activity For Result Deprecated
 
 ## Working through the Android Fundabmentals Codelab 2.1
 
-While working through (this codelab)[https://developer.android.com/codelabs/android-training-create-an-activity?index=..%2F..%2Fandroid-training#5], 
+While working through [this codelab](https://developer.android.com/codelabs/android-training-create-an-activity?index=..%2F..%2Fandroid-training#5), 
 in Task 4 we investigate returning data from another Activity, 
 to be used by the calling Activity. ```startActivityForResult``` works, but it's deprecated. 
 
