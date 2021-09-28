@@ -15,6 +15,8 @@ import android.widget.EditText;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.snackbar.Snackbar;
+
 /**
  * TODO: document your custom view class.
  */
@@ -40,7 +42,8 @@ public class ToDoItemView extends ConstraintLayout {
         // Inflate the view from the layout resource.
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.to_do_item_view, this, true);
-
     }
+
+
 
 }
