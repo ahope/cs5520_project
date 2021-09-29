@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToDoFragment">
+
+
+    <EditText
+        android:id="@+id/editTextTodoTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="A short title"
+        android:inputType="text|textCapSentences"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTodoDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:editable="true"
+        android:ems="10"
+        android:hint="Some more details"
+        android:inputType="textLongMessage"
+        android:lines="5"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTodoTitle" />
+
+    <EditText
+        android:id="@+id/editTextTodoDeadlineDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="When does it need to be done?"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDetail" />
+
+    <EditText
+        android:id="@+id/editTextTodoDeadlineTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Is there a time it needs to be done by?"
+        android:inputType="time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineDate" />
+
+    <CheckedTextView
+        android:id="@+id/checkedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CheckedTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".NewToDoActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/new_to_do_fragment"
+        android:name="edu.northeastern.cs5520.todo_adrienne.ToDoFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_to_do" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_to_do_fragment" />
+
+    <Button
+        android:id="@+id/buttonCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="createTodo"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+        app:layout_constraintTop_toBottomOf="@+id/new_to_do_fragment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
