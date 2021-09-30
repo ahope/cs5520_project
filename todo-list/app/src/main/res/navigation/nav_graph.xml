@@ -9,25 +9,5 @@
         android:id="@+id/FirstFragment"
         android:name="edu.northeastern.cs5520.todo_adrienne.ToDoListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_to_do_list">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="edu.northeastern.cs5520.todo_adrienne.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <activity
-        android:id="@+id/mainActivity2"
-        android:name="edu.northeastern.cs5520.todo_adrienne.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/fragment_to_do_list"/>
 </navigation>
