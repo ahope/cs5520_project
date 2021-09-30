@@ -33,51 +33,21 @@ public class ToDoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.fragment_to_do, container, false);
         binding = FragmentToDoBinding.inflate(inflater, container, false);
+        mViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
+        binding.setViewmodel(mViewModel);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        mViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
-        // Create the observer which updates the UI.
-        final Observer<String> titleObserver = new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String newName) {
-                // Update the UI, in this case, a TextView.
-                binding.editTextTodoTitle.setText(newName);
-            }
-        };
 
-        mViewModel.todoTitle.observe(getViewLifecycleOwner(), titleObserver);
-
-        binding.editTextTodoTitle.setOnKeyListener(new View.OnKeyListener(){
+        binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                mViewModel.todoTitle = binding.editTextTodoTitle.getText().toString();
-                mViewModel.todoTitle.setValue(binding.editTextTodoTitle.getText().toString());
-                return false;
+            public void onClick(View view) {
+                mViewModel.createTodo();
             }
         });
-
-        binding.editTextTodoDetail.setOnKeyListener(new View.OnKeyListener(){
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-//                mViewModel.todoTitle = binding.editTextTodoTitle.getText().toString();
-                mViewModel.todoDescription.setValue(binding.editTextTodoDetail.getText().toString());
-                return false;
-            }
-        });
-
-//        binding.buttonSave.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ToDoItemRepository.addToDo(ToDo.createTodo(binding.editTextTodoTitle.getText().toString(),
-//                        binding.editTextTodoDetail.getText().toString()));
-//
-//            }
-//        });
 
 //        items.setOnClickListener(item -> {
 //            // Set a new item

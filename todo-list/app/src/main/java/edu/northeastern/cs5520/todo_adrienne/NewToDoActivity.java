@@ -1,6 +1,7 @@
 package edu.northeastern.cs5520.todo_adrienne;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -19,11 +20,17 @@ public class NewToDoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_to_do);
         toDoViewModel = new ViewModelProvider(this).get(ToDoViewModel.class);
+
+        toDoViewModel.getTodoCreated().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean todoCreated) {
+                if (todoCreated) {
+//                    setResult();
+                    finish();
+                }
+            }
+        });
+
     }
 
-    public void createTodo(View view) {
-        ToDoItemRepository.addToDo(ToDo.createTodo(toDoViewModel.todoTitle.getValue(),
-                                        toDoViewModel.todoDescription.getValue()));
-        this.finish();
-    }
 }
