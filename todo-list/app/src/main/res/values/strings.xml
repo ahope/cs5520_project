@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Adrienne\'s ToDos</string>
+    <string name="app_name_frag">Adrienne\'s ToDos (fragment)</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Adrienne\'s ToDo List</string>
