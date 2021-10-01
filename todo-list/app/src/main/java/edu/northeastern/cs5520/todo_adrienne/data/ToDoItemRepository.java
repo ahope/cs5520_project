@@ -2,21 +2,27 @@ package edu.northeastern.cs5520.todo_adrienne.data;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
 public class ToDoItemRepository implements Iterable<ToDo>{
 
-    private static Set<ToDo> todoSet;
+    private static List<ToDo> todoSet;
 
     private static ToDoItemRepository singleton;
 
     private ToDoItemRepository() {
-        todoSet = new HashSet<ToDo>();
+        todoSet = new ArrayList<ToDo>();
         this.createFakeData();
+    }
+
+    public List<ToDo> asList() {
+        return todoSet;
     }
 
     public static ToDoItemRepository getAllTodos() {

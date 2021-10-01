@@ -4,21 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
 import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRepository;
-import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRepositoryChangeListener;
 import edu.northeastern.cs5520.todo_adrienne.databinding.FragmentToDoListBinding;
 import edu.northeastern.cs5520.todo_adrienne.databinding.ToDoItemViewBinding;
 
-public class ToDoListFragment extends Fragment implements ToDoItemRepositoryChangeListener {
+public class ToDoListFragment extends Fragment {
 
     private FragmentToDoListBinding binding;
 
@@ -27,13 +26,13 @@ public class ToDoListFragment extends Fragment implements ToDoItemRepositoryChan
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-
         binding = FragmentToDoListBinding.inflate(inflater, container, false);
 
         for (ToDo todo : ToDoItemRepository.getAllTodos()) {
             ToDoItemViewBinding todoBinding = ToDoItemViewBinding.inflate(inflater, binding.todoItemsLayout, true);
             todoBinding.setTodoTask(todo);
-            ((ConstraintLayout)(todoBinding.titleTextView.getParent())).setOnClickListener(new View.OnClickListener() {
+
+            (todoBinding.titleTextView).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Snackbar.make(view, todo.getTitle(), Snackbar.LENGTH_LONG)
@@ -46,24 +45,11 @@ public class ToDoListFragment extends Fragment implements ToDoItemRepositoryChan
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ToDoListFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    @Override
-    public void ToDoItemAdded(ToDo newToDoItem) {
-
     }
 }
