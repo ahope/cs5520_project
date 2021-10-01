@@ -17,6 +17,11 @@ import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRepository;
 import edu.northeastern.cs5520.todo_adrienne.databinding.FragmentToDoListBinding;
 import edu.northeastern.cs5520.todo_adrienne.databinding.ToDoItemViewBinding;
 
+/**
+ *  This Fragment displays a list of Todos, inflating a CustomUI component and adding it to a
+ *  LinearLayout. It's fine, and shows one approach, but isn't super efficient and is a little clunky.
+ *
+ */
 public class ToDoListFragment extends Fragment {
 
     private FragmentToDoListBinding binding;

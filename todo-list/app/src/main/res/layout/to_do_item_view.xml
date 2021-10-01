@@ -8,6 +8,10 @@
         <variable name="todoDetail" type="String"/>
     </data>
 
+<!--    This Layout is utilized by both the ToDoItemView (a Custom UI Component) and
+    the ToDoItemViewHolder, to be used in the ListView/RecyclerView.
+-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

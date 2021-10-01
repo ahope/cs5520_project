@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="edu.northeastern.cs5520.todo_adrienne.v2frags.ToDoListFragmentV2"
+        android:name="edu.northeastern.cs5520.todo_adrienne.ToDoListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_to_do_list"/>
 </navigation>
