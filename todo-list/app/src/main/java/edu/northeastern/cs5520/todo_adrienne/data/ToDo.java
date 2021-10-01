@@ -1,11 +1,23 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity(tableName="todo_table")
 public class ToDo {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name="id")
+    private int id;
 
+    @NonNull
     private String title;
+
 
     private String description;
 
