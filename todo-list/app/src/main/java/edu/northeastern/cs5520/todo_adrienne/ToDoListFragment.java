@@ -33,7 +33,7 @@ public class ToDoListFragment extends Fragment {
     ) {
         binding = FragmentToDoListBinding.inflate(inflater, container, false);
 
-        for (ToDo todo : ToDoItemRepository.getAllTodos()) {
+        for (ToDo todo : ToDoItemRepository.getSingleton()) {
             ToDoItemViewBinding todoBinding = ToDoItemViewBinding.inflate(inflater, binding.todoItemsLayout, true);
             todoBinding.setTodoTask(todo);
 

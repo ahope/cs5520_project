@@ -25,11 +25,11 @@ public class ToDoItemRecyclerViewAdapter extends RecyclerView.Adapter<ToDoItemVi
     @Override
     public void onBindViewHolder(@NonNull ToDoItemViewHolder holder, int position) {
         // This is how we bind the UI to a specific task
-        holder.bind(ToDoItemRepository.getAllTodos().asList().get(position));
+        holder.bind(ToDoItemRepository.getSingleton().getAllTodos().getValue().get(position));
     }
 
     @Override
     public int getItemCount() {
-        return ToDoItemRepository.getAllTodos().asList().size();
+        return ToDoItemRepository.getSingleton().getAllTodos().getValue().size();
     }
 }

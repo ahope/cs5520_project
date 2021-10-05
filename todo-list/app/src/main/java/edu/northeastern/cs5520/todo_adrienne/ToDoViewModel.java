@@ -36,7 +36,7 @@ public class ToDoViewModel extends ViewModel {
     }
 
     public void createTodo() {
-        ToDoItemRepository.addToDo(ToDo.createTodo(todoTitle.getValue(), todoDescription.getValue()));
+        ToDoItemRepository.getSingleton().addToDo(ToDo.createTodo(todoTitle.getValue(), todoDescription.getValue()));
         todoCreated.setValue(Boolean.TRUE);
     }
 
