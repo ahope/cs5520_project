@@ -21,13 +21,22 @@ public class ToDo {
 
     private String description;
 
-    private Set tags;
+//    private Set tags;
 
-    private LocalDateTime deadline;
+    // https://stackoverflow.com/questions/7363112/best-way-to-work-with-dates-in-android-sqlite
+//    private LocalDateTime deadline;
 
     private boolean remindMe;
 
-    private LocalDateTime reminderDateTime;
+//    private LocalDateTime reminderDateTime;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -45,21 +54,21 @@ public class ToDo {
         this.description = description;
     }
 
-    public Set getTags() {
-        return tags;
-    }
-
-    public void setTags(Set tags) {
-        this.tags = tags;
-    }
-
-    public LocalDateTime getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(LocalDateTime deadline) {
-        this.deadline = deadline;
-    }
+//    public Set getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(Set tags) {
+//        this.tags = tags;
+//    }
+//
+//    public LocalDateTime getDeadline() {
+//        return deadline;
+//    }
+//
+//    public void setDeadline(LocalDateTime deadline) {
+//        this.deadline = deadline;
+//    }
 
     public boolean isRemindMe() {
         return remindMe;
@@ -69,13 +78,13 @@ public class ToDo {
         this.remindMe = remindMe;
     }
 
-    public LocalDateTime getReminderDateTime() {
-        return reminderDateTime;
-    }
-
-    public void setReminderDateTime(LocalDateTime reminderDateTime) {
-        this.reminderDateTime = reminderDateTime;
-    }
+//    public LocalDateTime getReminderDateTime() {
+//        return reminderDateTime;
+//    }
+//
+//    public void setReminderDateTime(LocalDateTime reminderDateTime) {
+//        this.reminderDateTime = reminderDateTime;
+//    }
 
     public static ToDo createTodo(String title, String detail) {
         ToDo todo = new ToDo();
