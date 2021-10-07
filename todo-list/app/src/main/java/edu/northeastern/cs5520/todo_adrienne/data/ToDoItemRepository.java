@@ -1,5 +1,7 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
+import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
@@ -14,16 +16,15 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     private static ToDoItemRepository singleton;
 
-    private ToDoItemRepository() {
-//        ToDoRoomDatabase db = ToDoRoomDatabase.getDatabase(application);
-////        mToDoDao = db.ToDoDao();
-        mToDoDataSource = new ToDoInMemoryDataSource();
+    private ToDoItemRepository(Application application) {
+//        mToDoDataSource = new ToDoInMemoryDataSource();
+        mToDoDataSource = new ToDoDbDataSource(application);
         this.createFakeData();
     }
 
-    public static ToDoItemRepository getSingleton() {
+    public static ToDoItemRepository getSingleton(Application application) {
         if (singleton == null) {
-            singleton = new ToDoItemRepository();
+            singleton = new ToDoItemRepository(application);
         }
         return singleton;
     }

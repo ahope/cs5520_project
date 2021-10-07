@@ -8,12 +8,13 @@ import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {ToDo.class}, version = 1, exportSchema = false)
+@Database(entities = {ToDo.class}, version = 2, exportSchema = false)
 public abstract class ToDoRoomDatabase extends RoomDatabase {
 
     public abstract ToDoDao ToDoDao();
@@ -29,6 +30,8 @@ public abstract class ToDoRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             ToDoRoomDatabase.class, "todo_database")
+                            .addCallback(sRoomDatabaseCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -36,4 +39,23 @@ public abstract class ToDoRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+
+            // If you want to keep data through app restarts,
+            // comment out the following block
+            databaseWriteExecutor.execute(() -> {
+                // Populate the database in the background.
+                // If you want to start with more words, just add them.
+                ToDoDao dao = INSTANCE.ToDoDao();
+                dao.deleteAll();
+
+                dao.insert(ToDo.createTodo("Task todo 1", "do something, already"));
+                dao.insert(ToDo.createTodo("Task todo 2", "and another thign!"));
+            });
+        }
+    };
 }

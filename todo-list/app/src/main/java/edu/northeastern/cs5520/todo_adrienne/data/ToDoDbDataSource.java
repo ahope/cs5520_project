@@ -1,5 +1,7 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
@@ -10,8 +12,8 @@ public class ToDoDbDataSource implements IToDoDataSource{
 
     private ToDoDao mToDoDao;
 
-    public ToDoDbDataSource() {
-        ToDoRoomDatabase db = ToDoRoomDatabase.getDatabase(ToDoApplication.getInstance());
+    public ToDoDbDataSource(Application application) {
+        ToDoRoomDatabase db = ToDoRoomDatabase.getDatabase(application);
         mToDoDao = db.ToDoDao();
     }
 
@@ -29,7 +31,7 @@ public class ToDoDbDataSource implements IToDoDataSource{
 
     @Override
     public LiveData<List<ToDo>> getTodos() {
-        return null;
+        return mToDoDao.getTodos();
     }
 
 
