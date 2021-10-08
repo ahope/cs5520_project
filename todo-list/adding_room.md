@@ -9,6 +9,35 @@
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 ```
 
+
+## Checking Refactor
+
+I've refactored the ToDoItemRepository. My goal was to ensure that the Repository could easily use
+either an in-memory datasource or a db datasource. To do this, I created an interface, and then
+a DbDataSource and a InMemoryDataSource.
+
+
+
 ## Change the data class to an Entity, by adding annotations
 
+## Add the Database class
+
 ## 
+
+## Adding a parameterized Query
+
+
+## Adding a new query to the project 
+
+* Add the query method to ```ToDoItemRepository```
+   * ```GetNToDos(int n)```
+* Add the query to the DataSource interface ```IToDoDataSource```
+   * ```GetNToDos(int n)```
+* Add the query to the DataSource implementations
+   * For ToDoDbDataSource: 
+       * ```ToDoDao.GetNToDos(int n)```
+       * ``````
+         
+
+To actually use this 
+
