@@ -35,8 +35,7 @@ public class ToDoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-
-        // Wire up the button to
+        // Wire up the button to ensure the task gets created.
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

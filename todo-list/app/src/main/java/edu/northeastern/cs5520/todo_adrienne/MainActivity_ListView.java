@@ -35,7 +35,7 @@ public class MainActivity_ListView extends AppCompatActivity {
                 new ToDoItemRecyclerViewAdapter(new ToDoItemRecyclerViewAdapter.TodoDiff());
 
         mToDoViewModel.getAllToDos().observe(this, todos -> {
-            adapter.submitList(todos);
+           adapter.submitList(todos);
         });
 
         binding.recyclerViewMain.setAdapter(adapter);

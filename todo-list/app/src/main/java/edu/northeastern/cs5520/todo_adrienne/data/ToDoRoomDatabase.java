@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {ToDo.class}, version = 2, exportSchema = false)
+@Database(entities = {ToDo.class}, version = 3, exportSchema = false)
 public abstract class ToDoRoomDatabase extends RoomDatabase {
 
     public abstract ToDoDao ToDoDao();
