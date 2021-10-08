@@ -11,4 +11,6 @@ public interface IToDoDataSource {
     void deleteAll();
 
     LiveData<List<ToDo>> getTodos();
+
+    LiveData<List<ToDo>> getNTodos(int n);
 }

@@ -34,7 +34,9 @@ public class ToDoDbDataSource implements IToDoDataSource{
         return mToDoDao.getTodos();
     }
 
-
-
+    @Override
+    public LiveData<List<ToDo>> getNTodos(int n) {
+        return mToDoDao.getNTodos(n);
+    }
 
 }

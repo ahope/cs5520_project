@@ -28,4 +28,12 @@ public class ToDoInMemoryDataSource implements IToDoDataSource{
     public LiveData<List<ToDo>> getTodos() {
         return mToDoItems;
     }
+
+    @Override
+    public LiveData<List<ToDo>> getNTodos(int n) {
+        int numItems = mToDoItems.getValue().size();
+        List<ToDo> sublist = mToDoItems.getValue().subList(0, Math.min(n, numItems));
+        LiveData<List<ToDo>> liveSublist = new MutableLiveData<>(sublist);
+        return liveSublist;
+    }
 }

@@ -19,4 +19,9 @@ public interface ToDoDao {
 
     @Query("SELECT * FROM todo_table")
     LiveData<List<ToDo>> getTodos();
+
+    // Selects n elements from the table;
+    // Does not specify order (e.g. most recent n items).
+    @Query("SELECT * FROM todo_table LIMIT :n")
+    LiveData<List<ToDo>> getNTodos(int n);
 }
