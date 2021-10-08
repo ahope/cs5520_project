@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.northeastern.cs5520.todo_adrienne.data</OriginalElement>
+  <nodes>
+    <node x="514.0" y="405.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRepository</node>
+    <node x="129.75" y="405.0">edu.northeastern.cs5520.todo_adrienne.data.IToDoDataSource</node>
+    <node x="0.0" y="565.5">edu.northeastern.cs5520.todo_adrienne.data.ToDoInMemoryDataSource</node>
+    <node x="96.5" y="0.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoDao</node>
+    <node x="455.0" y="193.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoRoomDatabase_Impl</node>
+    <node x="293.0" y="744.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoItemViewHolder</node>
+    <node x="541.5" y="0.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoRoomDatabase</node>
+    <node x="0.0" y="932.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRecyclerViewAdapter</node>
+    <node x="0.0" y="149.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoDao_Impl</node>
+    <node x="252.0" y="554.0">edu.northeastern.cs5520.todo_adrienne.data.ToDoDbDataSource</node>
+    <node x="0.0" y="744.0">edu.northeastern.cs5520.todo_adrienne.data.ToDo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.northeastern.cs5520.todo_adrienne.data.ToDoDbDataSource" target="edu.northeastern.cs5520.todo_adrienne.data.IToDoDataSource">
+      <point x="0.0" y="-72.5" />
+      <point x="360.5" y="529.0" />
+      <point x="292.5" y="529.0" />
+      <point x="54.25" y="49.5" />
+    </edge>
+    <edge source="edu.northeastern.cs5520.todo_adrienne.data.ToDoRoomDatabase_Impl" target="edu.northeastern.cs5520.todo_adrienne.data.ToDoRoomDatabase">
+      <point x="0.0" y="-82.5" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="edu.northeastern.cs5520.todo_adrienne.data.ToDoInMemoryDataSource" target="edu.northeastern.cs5520.todo_adrienne.data.IToDoDataSource">
+      <point x="0.0" y="-61.0" />
+      <point x="116.0" y="529.0" />
+      <point x="184.0" y="529.0" />
+      <point x="-54.25" y="49.5" />
+    </edge>
+    <edge source="edu.northeastern.cs5520.todo_adrienne.data.ToDoDao_Impl" target="edu.northeastern.cs5520.todo_adrienne.data.ToDoDao">
+      <point x="0.0" y="-105.5" />
+      <point x="0.0" y="49.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="359.0" y="411.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

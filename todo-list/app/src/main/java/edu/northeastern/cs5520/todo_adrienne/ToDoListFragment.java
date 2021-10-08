@@ -33,7 +33,8 @@ public class ToDoListFragment extends Fragment {
     ) {
         binding = FragmentToDoListBinding.inflate(inflater, container, false);
 
-        for (ToDo todo : ToDoItemRepository.getAllTodos()) {
+        // TODO(ahs): The getSingleton(null) is a hack. Since this is a demo Fragment, I'm letting it stay.
+        for (ToDo todo : ToDoItemRepository.getSingleton(null)) {
             ToDoItemViewBinding todoBinding = ToDoItemViewBinding.inflate(inflater, binding.todoItemsLayout, true);
             todoBinding.setTodoTask(todo);
 

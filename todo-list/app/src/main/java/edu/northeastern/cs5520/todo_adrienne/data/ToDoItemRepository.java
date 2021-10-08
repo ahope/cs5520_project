@@ -1,61 +1,70 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
-import androidx.annotation.NonNull;
+import android.app.Application;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
 public class ToDoItemRepository implements Iterable<ToDo>{
 
-    private static List<ToDo> todoSet;
+    private IToDoDataSource mToDoDataSource;
 
     private static ToDoItemRepository singleton;
 
-    private ToDoItemRepository() {
-        todoSet = new ArrayList<ToDo>();
+    private ToDoItemRepository(Application application) {
+//        mToDoDataSource = new ToDoInMemoryDataSource();
+        mToDoDataSource = new ToDoDbDataSource(application);
         this.createFakeData();
     }
 
-    public List<ToDo> asList() {
-        return todoSet;
-    }
-
-    public static ToDoItemRepository getAllTodos() {
+    public static ToDoItemRepository getSingleton(Application application) {
         if (singleton == null) {
-            singleton = new ToDoItemRepository();
+            singleton = new ToDoItemRepository(application);
         }
         return singleton;
     }
 
-    public static void addToDo(ToDo newToDo) {
-        getAllTodos().todoSet.add(newToDo);
+    public List<ToDo> asList() {
+        return mToDoDataSource.getTodos().getValue();
+    }
+
+    public LiveData<List<ToDo>> getAllTodos() {
+        return mToDoDataSource.getTodos();
+    }
+
+    public LiveData<List<ToDo>> getNToDos(int n) {
+        return mToDoDataSource.getNTodos(n);
+    }
+
+    public void addToDo(ToDo newToDo) {
+        mToDoDataSource.insert(newToDo);
     }
 
     private void createFakeData() {
-        todoSet.add(ToDo.createTodo("Task todo 1", "do something, already"));
-        todoSet.add(ToDo.createTodo("Task todo 2", "and another thign!"));
+        addToDo(ToDo.createTodo("Task todo 1", "do something, already"));
+        addToDo(ToDo.createTodo("Task todo 2", "and another thign!"));
 
     }
 
     @NonNull
     @Override
     public Iterator<ToDo> iterator() {
-        return todoSet.iterator();
+        return mToDoDataSource.getTodos().getValue().iterator();
     }
 
     @Override
     public void forEach(@NonNull Consumer<? super ToDo> action) {
-        todoSet.forEach(action);
+        mToDoDataSource.getTodos().getValue().forEach(action);
     }
 
     @NonNull
     @Override
     public Spliterator<ToDo> spliterator() {
-        return todoSet.spliterator();
+        return mToDoDataSource.getTodos().getValue().spliterator();
     }
 }
