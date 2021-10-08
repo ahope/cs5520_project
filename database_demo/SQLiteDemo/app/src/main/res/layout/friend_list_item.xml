@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+
+
+    <TextView
+        android:id="@+id/friend_list_item_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#8BC34A"
+        android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="1dp"
+        android:textSize="34sp"></TextView>
+
+
+    <TextView
+        android:id="@+id/friend_list_item_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#FF9800"
+        android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="1dp"
+        android:textSize="34sp"></TextView>
+
+
+    <TextView
+        android:id="@+id/friend_list_item_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="#00BCD4"
+        android:paddingLeft="2dp"
+        android:paddingTop="3dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="1dp"
+        android:textSize="34sp"></TextView>
+
+
+    <TextView
+        android:id="@+id/friend_list_item_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="1dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="3dp"></TextView>
+
+    <TextView
+        android:id="@+id/friend_list_item_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="1dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="3dp"
+        android:textSize="34sp"></TextView>
+
+</LinearLayout>
