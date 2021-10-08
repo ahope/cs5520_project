@@ -37,6 +37,10 @@ public class ToDoItemRepository implements Iterable<ToDo>{
         return mToDoDataSource.getTodos();
     }
 
+    public LiveData<List<ToDo>> getNToDos(int n) {
+        return mToDoDataSource.getNTodos(n);
+    }
+
     public void addToDo(ToDo newToDo) {
         mToDoDataSource.insert(newToDo);
     }

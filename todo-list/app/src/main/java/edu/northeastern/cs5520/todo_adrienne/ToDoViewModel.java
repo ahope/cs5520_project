@@ -25,18 +25,18 @@ public class ToDoViewModel extends AndroidViewModel {
     public ToDoViewModel(Application application) {
         super(application);
         repository = ToDoItemRepository.getSingleton(application);
-//        todoTitle = savedStateHandle.get("title");
         if (todoTitle == null) {
             todoTitle = new MutableLiveData<>();
             todoTitle.setValue("");
         }
-//        todoDescription = savedStateHandle.get("description");
         if (todoDescription == null) {
             todoDescription = new MutableLiveData<>();
             todoDescription.setValue("");
         }
 
-        mAllToDos = repository.getAllTodos();
+        // Using only *n* todos
+//        mAllToDos = repository.getAllTodos();
+        mAllToDos = repository.getNToDos(5);
 
         todoCreated.setValue(Boolean.FALSE);
     }
