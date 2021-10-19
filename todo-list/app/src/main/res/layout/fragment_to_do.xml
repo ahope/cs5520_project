@@ -2,121 +2,193 @@
 
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="9dp"
+    android:padding="3dp">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
-            type="edu.northeastern.cs5520.todo_adrienne.ToDoViewModel"/>
+            type="edu.northeastern.cs5520.todo_adrienne.ToDoViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ToDoFragment">
 
-    <EditText
-        android:id="@+id/editTextTodoTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="A short title"
-        android:text="@={viewmodel.currentToDo.title}"
-        android:inputType="text|textCapSentences"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ToDoFragment">
 
-    <EditText
-        android:id="@+id/editTextTodoDetail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:editable="true"
-        android:ems="10"
-        android:hint="Some more details"
-        android:text="@={viewmodel.currentToDo.description}"
-        android:inputType="textLongMessage"
-        android:lines="5"
-        android:singleLine="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTodoTitle" />
+        <TextView
+            android:id="@+id/textViewTitleHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A Short Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTodoDeadlineDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="When does it need to be done?"
-        android:inputType="date"
-        android:text="@{viewmodel.currentToDo.deadlineDayAsString}"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDetail" />
+        <EditText
+            android:id="@+id/editTextTodoTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="A short title"
+            android:inputType="text|textCapSentences"
+            android:text="@={viewmodel.currentToDo.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitleHeader" />
 
-    <Button
-        android:id="@+id/buttonChooseDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Choose Date"
-        app:layout_constraintStart_toEndOf="@id/editTextTodoDeadlineDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDetail"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        />
+        <TextView
+            android:id="@+id/textViewDetailHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More Details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextTodoTitle" />
 
-    <EditText
-        android:id="@+id/editTextTodoDeadlineTime"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Is there a time it needs to be done by?"
-        android:inputType="time"
-        android:text="@{viewmodel.currentToDo.deadlineTimeAsString}"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineDate" />
+        <EditText
+            android:id="@+id/editTextTodoDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Some more details"
+            android:inputType="textLongMessage"
+            android:lines="5"
+            android:singleLine="false"
+            android:text="@={viewmodel.currentToDo.description}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetailHeader" />
 
-    <Button
-        android:id="@+id/buttonChooseTime"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Choose Time"
-        app:layout_constraintStart_toEndOf="@id/editTextTodoDeadlineTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonChooseDate"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        />
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CheckedTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineTime" />
+        <TextView
+            android:id="@+id/textViewDateDeadlineHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deadline date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextTodoDetail" />
 
-    <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkedTextView" />
+        <TextView
+            android:id="@+id/editTextTodoDeadlineDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:ems="10"
+            android:hint="When does it need to be done?"
+            android:inputType="date"
+            android:text="@{viewmodel.currentToDo.deadlineDayAsString}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDateDeadlineHeader" />
 
-    <Button
-        android:id="@+id/buttonCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createTodo"
-        android:text="Create"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonCancel"
-        app:layout_constraintTop_toBottomOf="@+id/checkedTextView" />
+        <Button
+            android:id="@+id/buttonChooseDate"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Choose Date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineDate" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewTimeDeadlineHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deadline time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonChooseDate" />
+
+        <TextClock
+            android:id="@+id/editTextTodoDeadlineTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Is there a time it needs to be done by?"
+            android:inputType="time"
+            android:text="@{viewmodel.currentToDo.deadlineTimeAsString}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTimeDeadlineHeader" />
+
+        <Button
+            android:id="@+id/buttonChooseTime"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Choose Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineTime" />
+
+        <TextView
+            android:id="@+id/textViewReminderHeader"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Reminder Info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonChooseTime" />
+
+        <CheckedTextView
+            android:id="@+id/checkedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This will/won't be reminded"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReminderHeader" />
+
+        <TextView
+            android:id="@+id/textViewIsCompletedHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is Completed Info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkedTextView" />
+
+        <TextView
+            android:id="@+id/textViewIsCompletedValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes or No"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewIsCompletedHeader" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewIsCompletedValue" />
+
+        <Button
+            android:id="@+id/buttonCreate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="createTodo"
+            android:text="Create"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/buttonCancel"
+            app:layout_constraintTop_toBottomOf="@id/textViewIsCompletedValue" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

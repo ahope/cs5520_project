@@ -56,7 +56,6 @@ public class ToDoFragment extends Fragment {
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mViewModel.createTodo();
                 mViewModel.persistCurrentToDo();
             }
         });
@@ -96,7 +95,7 @@ public class ToDoFragment extends Fragment {
                     public void onClick(View view) {
                         LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
                         mViewModel.currentToDo.getValue().setDeadline(curDate.withHour(materialTimePicker.getHour()).withMinute(materialTimePicker.getMinute()));
-//                        mViewModel.setTime(materialTimePicker.getHour() + ":" + materialTimePicker.getMinute());
+                        binding.editTextTodoDeadlineTime.setText(mViewModel.currentToDo.getValue().getDeadlineTimeAsString());
                     }
                 }
         );

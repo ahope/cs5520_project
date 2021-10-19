@@ -41,11 +41,15 @@ public class ToDo {
 
     private boolean remindMe = false;
 
-//    private LocalDateTime reminderDateTime;
+    private boolean isCompleted = false;
 
-    public static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//    private static DateTimeFormatter dateFormat  = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);// .valueOf("yyyy-MM-dd"));//new SimpleDateFormat("yyyy-MM-dd");
-    private static DateTimeFormatter timeFormat  = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT); // valueOf("hh:mm"));//new SimpleDateFormat("hh:mm");
+    private int importance = 0;
+
+    @TypeConverters({TimestampConverter.class})
+    private LocalDateTime reminderDateTime;
+
+    public static DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd MMM yyyy");
+    private static DateTimeFormatter timeFormat  = DateTimeFormatter.ofPattern("hh:mm a");
 
 
     public int getId() {
@@ -88,20 +92,15 @@ public class ToDo {
         this.remindMe = remindMe;
     }
 
-//    public LocalDateTime getReminderDateTime() {
-//        return reminderDateTime;
-//    }
-//
-//    public void setReminderDateTime(LocalDateTime reminderDateTime) {
-//        this.reminderDateTime = reminderDateTime;
-//    }
-
-    public static ToDo createTodo(String title, String detail) {
-        ToDo todo = new ToDo();
-        todo.setTitle(title);
-        todo.setDescription(detail);
-        return todo;
+    public LocalDateTime getReminderDateTime() {
+        return reminderDateTime;
     }
+
+    public void setReminderDateTime(LocalDateTime reminderDateTime) {
+        this.reminderDateTime = reminderDateTime;
+    }
+
+
 
     public LocalDateTime getDeadline() {
         return deadline;
@@ -114,11 +113,35 @@ public class ToDo {
     public String getDeadlineDayAsString() {
           if (this.deadline == null) return ""; // TODO(ahs): Get rid of this hack
 //        return dateFormat.format(this.deadline);
-        return this.deadline.format(dateFormat);
+        return dateFormat.format(this.deadline);
     }
 
     public String getDeadlineTimeAsString() {
         if (this.deadline == null) return ""; // TODO(ahs): Get rid of this hack
         return timeFormat.format(this.deadline);
+    }
+
+
+    public static ToDo createTodo(String title, String detail) {
+        ToDo todo = new ToDo();
+        todo.setTitle(title);
+        todo.setDescription(detail);
+        return todo;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
+    }
+
+    public int getImportance() {
+        return importance;
+    }
+
+    public void setImportance(int importance) {
+        this.importance = importance;
     }
 }
