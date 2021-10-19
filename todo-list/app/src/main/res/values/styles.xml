@@ -1,6 +1,8 @@
 <resources>
     <style name="Widget.Theme.MainActivity.MyView" parent="">
-        <item name="android:background">@color/gray_400</item>
-        <item name="exampleColor">@color/light_blue_400</item>
+        <item name="android:background">@color/primaryLightColor</item>
+        <item name="exampleColor">@color/secondaryLightColor</item>
+        <item name="colorOnSurface">@color/primaryLightColor</item>
+        <item name="colorSecondary">@color/secondaryLightColor</item>
     </style>
 </resources>

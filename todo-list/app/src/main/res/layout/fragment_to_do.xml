@@ -17,14 +17,13 @@
     android:layout_height="match_parent"
     tools:context=".ToDoFragment">
 
-
     <EditText
         android:id="@+id/editTextTodoTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="A short title"
-        android:text="@={viewmodel.todoTitle}"
+        android:text="@={viewmodel.currentToDo.title}"
         android:inputType="text|textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +36,7 @@
         android:editable="true"
         android:ems="10"
         android:hint="Some more details"
-        android:text="@={viewmodel.todoDescription}"
+        android:text="@={viewmodel.currentToDo.description}"
         android:inputType="textLongMessage"
         android:lines="5"
         android:singleLine="false"
@@ -52,9 +51,20 @@
         android:ems="10"
         android:hint="When does it need to be done?"
         android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@{viewmodel.currentToDo.deadlineDayAsString}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTodoDetail" />
+
+    <Button
+        android:id="@+id/buttonChooseDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Choose Date"
+        app:layout_constraintStart_toEndOf="@id/editTextTodoDeadlineDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTodoDetail"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
 
     <EditText
         android:id="@+id/editTextTodoDeadlineTime"
@@ -63,9 +73,20 @@
         android:ems="10"
         android:hint="Is there a time it needs to be done by?"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@{viewmodel.currentToDo.deadlineTimeAsString}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineDate" />
+
+    <Button
+        android:id="@+id/buttonChooseTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Choose Time"
+        app:layout_constraintStart_toEndOf="@id/editTextTodoDeadlineTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonChooseDate"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
 
     <CheckedTextView
         android:id="@+id/checkedTextView"
