@@ -19,7 +19,7 @@ public class ToDoItemRepository implements Iterable<ToDo>{
     private ToDoItemRepository(Application application) {
 //        mToDoDataSource = new ToDoInMemoryDataSource();
         mToDoDataSource = new ToDoDbDataSource(application);
-        this.createFakeData();
+//        this.createFakeData();
     }
 
     public static ToDoItemRepository getSingleton(Application application) {

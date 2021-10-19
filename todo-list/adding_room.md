@@ -41,3 +41,16 @@ a DbDataSource and a InMemoryDataSource.
 
 To actually use this 
 
+
+
+# Working with dates, times, etc. 
+
+Challenge: SQLite doesn't have a "DateTime" column type. 
+
+Solution: Store as a String. Do this by creating a ```TypeConverter``` (in this case, ```TimestampConverter```). 
+
+Challenge: Transforming from a null dateTime to a non-null DateTime. 
+
+Recommendation: Use a LocalDateTime, and require a minimum Android API level of 26. (Makes things easier. ) If you HAVE to accommodate <26, use a Java Date object instead. 
+
+

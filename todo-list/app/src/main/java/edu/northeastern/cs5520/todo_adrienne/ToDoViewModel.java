@@ -14,12 +14,13 @@ import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRepository;
 public class ToDoViewModel extends AndroidViewModel {
     public MutableLiveData<String> todoTitle = new MutableLiveData<>();
     public MutableLiveData<String> todoDescription = new MutableLiveData<>();
-
     private MutableLiveData<Boolean> todoCreated = new MutableLiveData<>();
 
     private ToDoItemRepository repository;
 
     private final LiveData<List<ToDo>> mAllToDos;
+
+    public MutableLiveData<ToDo> currentToDo = new MutableLiveData<>();
 
     // TODO(ahs): Review/include the SavedStateHandle stuff
     public ToDoViewModel(Application application) {
@@ -35,14 +36,19 @@ public class ToDoViewModel extends AndroidViewModel {
         }
 
         // Using only *n* todos
-//        mAllToDos = repository.getAllTodos();
-        mAllToDos = repository.getNToDos(5);
+        mAllToDos = repository.getAllTodos();
+//        mAllToDos = repository.getNToDos(5);
 
         todoCreated.setValue(Boolean.FALSE);
     }
 
     public LiveData<Boolean> getTodoCreated() {
         return todoCreated;
+    }
+
+    public void persistCurrentToDo() {
+        repository.addToDo(currentToDo.getValue());
+        todoCreated.setValue(Boolean.TRUE);
     }
 
     public void createTodo() {
