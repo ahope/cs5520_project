@@ -36,4 +36,17 @@ public class ToDoInMemoryDataSource implements IToDoDataSource{
         LiveData<List<ToDo>> liveSublist = new MutableLiveData<>(sublist);
         return liveSublist;
     }
+
+    @Override
+    public LiveData<ToDo> getToDoById(int id) {
+        return null; // TODO(ahs): Actually return a ToDo with ID
+    }
+
+    @Override
+    public int update(ToDo todo) {
+        // TODO(ahs): Actually update a ToDo
+        return 0;
+    }
+
+
 }

@@ -1,10 +1,12 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -24,4 +26,11 @@ public interface ToDoDao {
     // Does not specify order (e.g. most recent n items).
     @Query("SELECT * FROM todo_table LIMIT :n")
     LiveData<List<ToDo>> getNTodos(int n);
+
+    @Query("SELECT * FROM todo_table WHERE id = :id")
+    LiveData<ToDo> getToDoById(int id);
+
+    @Update
+    int update(ToDo todo);
+
 }
