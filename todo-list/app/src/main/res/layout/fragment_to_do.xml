@@ -20,35 +20,46 @@
         android:layout_height="match_parent"
         tools:context=".ToDoFragment">
 
-        <TextView
-            android:id="@+id/textViewTitleHeader"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layoutTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A Short Title"
+            android:layout_margin="1dp"
+            android:background="?attr/colorControlHighlight"
+            android:orientation="vertical"
+            android:padding="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextTodoTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="A short title"
-            android:inputType="text|textCapSentences"
-            android:text="@{viewmodel.adrienneTodoTitle}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitleHeader" />
+            <TextView
+                android:id="@+id/textViewTitleHeader"
+                style="@style/TextView.ToDoHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:text="A Short Title"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editTextTodoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="A short title"
+                android:inputType="text|textCapSentences"
+                android:text="@{viewmodel.adrienneTodoTitle}" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewDetailHeader"
+            style="@style/TextView.ToDoHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="More Details"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextTodoTitle" />
+            app:layout_constraintTop_toBottomOf="@id/layoutTitle" />
 
         <EditText
             android:id="@+id/editTextTodoDetail"
@@ -67,6 +78,7 @@
 
         <TextView
             android:id="@+id/textViewDateDeadlineHeader"
+            style="@style/TextView.ToDoHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deadline date"
@@ -89,7 +101,7 @@
 
         <Button
             android:id="@+id/buttonChooseDate"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@android:style/Widget.Material.Light.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Choose Date"
@@ -99,6 +111,7 @@
 
         <TextView
             android:id="@+id/textViewTimeDeadlineHeader"
+            style="@style/TextView.ToDoHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deadline time"
@@ -121,7 +134,7 @@
 
         <Button
             android:id="@+id/buttonChooseTime"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@android:style/Widget.Material.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Choose Time"
@@ -179,8 +192,9 @@
             android:id="@+id/buttonCreate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:onClick="createTodo"
-            android:text="Create"
+            android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"

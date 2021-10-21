@@ -31,8 +31,6 @@ public class ToDoViewModel extends AndroidViewModel {
             result.setValue(new ToDo());
             return result;
         }
-//        MutableLiveData<ToDo> result = new MutableLiveData<>();
-//        result.setValue(repository.asList().get(id));
         return repository.getToDoById(id);
     });
 
@@ -71,7 +69,6 @@ public class ToDoViewModel extends AndroidViewModel {
     public ToDoViewModel(Application application) {
         super(application);
         repository = ToDoItemRepository.getSingleton(application);
-
     }
 
     public void loadToDo(int todoId) {
@@ -105,31 +102,20 @@ public class ToDoViewModel extends AndroidViewModel {
     public void updateTime(int newHour, int newMin) {
         _time.setValue(_date.getValue().withHour(newHour).withMinute(newMin));
         _date.setValue(_time.getValue());
-
-//
-//        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
-//        mViewModel.currentToDo.getValue().setDeadline(curDate.withHour(materialTimePicker.getHour()).withMinute(materialTimePicker.getMinute()));
-//        binding.editTextTodoDeadlineTime.setText(mViewModel.currentToDo.getValue().getDeadlineTimeAsString());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateDate(long epochTime) {
-//        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
-//        Long newDate = ((Long)materialDatePicker.getSelection()).longValue();
-        // TODO (AHS): Bah-- timezones!!
-
         LocalDateTime ldt = LocalDateTime.ofEpochSecond(epochTime/1000, 0, ZoneOffset.UTC);
         LocalDateTime ldt2 = ldt.withHour(_date.getValue().getHour());
         LocalDateTime ldt3 = ldt2.withMinute(ldt2.getMinute());
         _date.setValue(ldt3);
-
         _time.setValue(_date.getValue());
     }
 
     public LiveData<String> getAdrienneTodoTitle() {
         return todoTitle;
     }
-
 
     public void setAdrienneTodoTitle(String newTitle) {
         _todoTitle.setValue(newTitle);

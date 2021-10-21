@@ -5,4 +5,8 @@
         <item name="colorOnSurface">@color/primaryLightColor</item>
         <item name="colorSecondary">@color/secondaryLightColor</item>
     </style>
+    <style name="TextView.ToDoHeading" parent="">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/primaryDarkColor</item>
+    </style>
 </resources>
