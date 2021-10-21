@@ -1,7 +1,10 @@
 package edu.northeastern.cs5520.todo_adrienne;
 
 import android.app.Application;
+import android.mtp.MtpConstants;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.databinding.Bindable;
 import androidx.databinding.InverseMethod;
 import androidx.lifecycle.AndroidViewModel;
@@ -23,6 +26,11 @@ public class ToDoViewModel extends AndroidViewModel {
     private final MutableLiveData<Integer> todoId = new MutableLiveData<>();
 
     private final LiveData<ToDo> todo = Transformations.switchMap(todoId, (id) -> {
+        if (id < 0){
+            MutableLiveData<ToDo> result = new MutableLiveData<>();
+            result.setValue(new ToDo());
+            return result;
+        }
 //        MutableLiveData<ToDo> result = new MutableLiveData<>();
 //        result.setValue(repository.asList().get(id));
         return repository.getToDoById(id);
@@ -36,27 +44,28 @@ public class ToDoViewModel extends AndroidViewModel {
             });
 
 
+    private MutableLiveData<String> _todoDescription = new MutableLiveData<>();
     public LiveData<String> todoDescription = Transformations.map(todo, (todo) -> {
         return todo.getDescription();
     });
 
+
+    private MutableLiveData<LocalDateTime> _date = new MutableLiveData<>();
     public LiveData<String> todoDateAsString = Transformations.map(todo, (todo) -> {
+        _date.setValue(todo.getDeadline());
         return todo.getDeadlineDayAsString();
     });
 
+    private MutableLiveData<LocalDateTime> _time = new MutableLiveData<>();
     public LiveData<String> todoTimeAsString = Transformations.map(todo, (todo) -> {
+        _time.setValue(todo.getDeadline());
         return todo.getDeadlineTimeAsString();
     });
 
     private MutableLiveData<Boolean> todoCreated = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>(Boolean.FALSE);
     private MutableLiveData<Boolean> isDataLoaded = new MutableLiveData<>(Boolean.FALSE);
-//    private MutableLiveData<Integer> toDoId = new MutableLiveData<>();
 
-
-
-    // TODO(AHS): get rid of this
-//    public MutableLiveData<ToDo> currentToDo = new MutableLiveData<>();
 
     // TODO(ahs): Review/include the SavedStateHandle stuff
     public ToDoViewModel(Application application) {
@@ -74,41 +83,47 @@ public class ToDoViewModel extends AndroidViewModel {
     }
 
     public void persistCurrentToDo() {
-//        repository.addToDo(currentToDo.getValue());
         ToDo updatedToDo = todo.getValue();
         updatedToDo.setTitle(_todoTitle.getValue());
-        int result = repository.update(updatedToDo);
+        updatedToDo.setDescription(_todoDescription.getValue());
+        updatedToDo.setDeadline(_date.getValue());
 
+        if (todoId.getValue() < 0) {
+            repository.addToDo(updatedToDo);
+        } else {
+            int result = repository.update(updatedToDo);
+        }
         todoCreated.setValue(Boolean.TRUE);
     }
-
-//    public void loadToDo(int id) {
-//        // TODO(ahs): Make sure that this mutable/not mutable is what we really want.
-//        LiveData<ToDo> todo = repository.getToDoById(id);
-//        TODO(ahs): this is where
-//        currentToDo.setValue(todo.getValue());
-//        currentToDo.postValue(todo.getValue());
-//    }
-
 
     public void createTodo() {
         repository.addToDo(ToDo.createTodo(todoTitle.getValue(), todoDescription.getValue()));
         todoCreated.setValue(Boolean.TRUE);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateTime(int newHour, int newMin) {
+        _time.setValue(_date.getValue().withHour(newHour).withMinute(newMin));
+        _date.setValue(_time.getValue());
 
+//
+//        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
+//        mViewModel.currentToDo.getValue().setDeadline(curDate.withHour(materialTimePicker.getHour()).withMinute(materialTimePicker.getMinute()));
+//        binding.editTextTodoDeadlineTime.setText(mViewModel.currentToDo.getValue().getDeadlineTimeAsString());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateDate(long epochTime) {
 //        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
 //        Long newDate = ((Long)materialDatePicker.getSelection()).longValue();
-//        // TODO (AHS): Bah-- timezones!!
-//
-//        LocalDateTime ldt = LocalDateTime.ofEpochSecond(newDate.longValue()/1000, 0, ZoneOffset.UTC);
-//        LocalDateTime ldt2 = ldt.withHour(curDate.getHour());
-//        LocalDateTime ldt3 = ldt2.withMinute(curDate.getMinute());
-//        mViewModel.currentToDo.getValue().setDeadline(ldt3);
+        // TODO (AHS): Bah-- timezones!!
+
+        LocalDateTime ldt = LocalDateTime.ofEpochSecond(epochTime/1000, 0, ZoneOffset.UTC);
+        LocalDateTime ldt2 = ldt.withHour(_date.getValue().getHour());
+        LocalDateTime ldt3 = ldt2.withMinute(ldt2.getMinute());
+        _date.setValue(ldt3);
+
+        _time.setValue(_date.getValue());
     }
 
     public LiveData<String> getAdrienneTodoTitle() {
@@ -118,6 +133,10 @@ public class ToDoViewModel extends AndroidViewModel {
 
     public void setAdrienneTodoTitle(String newTitle) {
         _todoTitle.setValue(newTitle);
+    }
+
+    public void updateDescription(String description) {
+        _todoDescription.setValue(description);
     }
 
 }

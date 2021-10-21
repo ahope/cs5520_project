@@ -20,19 +20,21 @@ import edu.northeastern.cs5520.todo_adrienne.databinding.ActivityNewToDoBinding;
 
 public class NewToDoActivity extends AppCompatActivity {
 
+    public static String EXTRA_KEY_TODO_ID = "todo_id";
+
     private ToDoViewModel toDoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_new_to_do);
 
         ActivityNewToDoBinding binding = ActivityNewToDoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Get an instance to the shared ViewModel
         toDoViewModel = new ViewModelProvider(this).get(ToDoViewModel.class);
-        toDoViewModel.currentToDo.setValue(new ToDo());
+        int cur_id = getIntent().getIntExtra(EXTRA_KEY_TODO_ID, -1);
+        toDoViewModel.loadToDo(cur_id);
 
         // Observe a flag we use to say the new ToDo has been created
         // This is a bit of a hack; there's a slightly better way to do this (observe an

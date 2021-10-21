@@ -8,9 +8,7 @@
     android:padding="3dp">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="viewmodel"
             type="edu.northeastern.cs5520.todo_adrienne.ToDoViewModel" />

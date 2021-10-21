@@ -72,6 +72,7 @@ public class ToDoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mViewModel.setAdrienneTodoTitle(binding.editTextTodoTitle.getText().toString());
+                mViewModel.updateDescription(binding.editTextTodoDetail.getText().toString());
                 mViewModel.persistCurrentToDo();
             }
         });
