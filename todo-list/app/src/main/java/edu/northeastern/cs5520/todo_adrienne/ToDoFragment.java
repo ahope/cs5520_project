@@ -1,6 +1,7 @@
 package edu.northeastern.cs5520.todo_adrienne;
 
 import androidx.annotation.RequiresApi;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
@@ -23,6 +24,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
+import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
 import edu.northeastern.cs5520.todo_adrienne.databinding.FragmentToDoBinding;
 
 
@@ -34,9 +36,6 @@ public class ToDoFragment extends Fragment {
     private MaterialDatePicker materialDatePicker;
     private MaterialTimePicker materialTimePicker;
 
-    public static ToDoFragment newInstance() {
-        return new ToDoFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -44,6 +43,7 @@ public class ToDoFragment extends Fragment {
         binding = FragmentToDoBinding.inflate(inflater, container, false);
         mViewModel = new ViewModelProvider(requireActivity()).get(ToDoViewModel.class);
         binding.setViewmodel(mViewModel);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
         return binding.getRoot();
     }
 
@@ -52,24 +52,33 @@ public class ToDoFragment extends Fragment {
         buildDatePicker();
         buildTimePicker();
 
+//        mViewModel.todoTitle.observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                binding.editTextTodoTitle.setText(s);
+//            }
+//        });
+
+//        mViewModel.currentToDo.observe(getViewLifecycleOwner(), new Observer<ToDo>() {
+//            @Override
+//            public void onChanged(ToDo toDo) {
+//                if (toDo != null)
+//                    binding.editTextTodoTitle.setText(toDo.getTitle());
+//            }
+//        });
+
         // Wire up the button to ensure the task gets created.
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mViewModel.setAdrienneTodoTitle(binding.editTextTodoTitle.getText().toString());
                 mViewModel.persistCurrentToDo();
             }
         });
 
-        binding.buttonChooseDate.setOnClickListener(new View.OnClickListener(
-
-        ) {
+        binding.buttonChooseDate.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View view) {
-                // getSupportFragmentManager() to
-                // interact with the fragments
-                // associated with the material design
-                // date picker tag is to get any error
-                // in logcat
                 materialDatePicker.show(ToDoFragment.this.getParentFragmentManager(), "MATERIAL_DATE_PICKER");
             }
         });
@@ -93,9 +102,10 @@ public class ToDoFragment extends Fragment {
                     @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onClick(View view) {
-                        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
-                        mViewModel.currentToDo.getValue().setDeadline(curDate.withHour(materialTimePicker.getHour()).withMinute(materialTimePicker.getMinute()));
-                        binding.editTextTodoDeadlineTime.setText(mViewModel.currentToDo.getValue().getDeadlineTimeAsString());
+                        mViewModel.updateTime(materialTimePicker.getHour(), materialTimePicker.getMinute());
+//                        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
+//                        mViewModel.currentToDo.getValue().setDeadline(curDate.withHour(materialTimePicker.getHour()).withMinute(materialTimePicker.getMinute()));
+//                        binding.editTextTodoDeadlineTime.setText(mViewModel.currentToDo.getValue().getDeadlineTimeAsString());
                     }
                 }
         );
@@ -140,24 +150,7 @@ public class ToDoFragment extends Fragment {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onPositiveButtonClick(Object selection) {
-
-                        // if the user clicks on the positive
-                        // button that is ok button update the
-                        // selected date
-                        LocalDateTime curDate = mViewModel.currentToDo.getValue().getDeadline();
-                        Long newDate = ((Long)materialDatePicker.getSelection()).longValue();
-                        // TODO (AHS): Bah-- timezones!!
-
-                        LocalDateTime ldt = LocalDateTime.ofEpochSecond(newDate.longValue()/1000, 0, ZoneOffset.UTC);
-                        LocalDateTime ldt2 = ldt.withHour(curDate.getHour());
-                        LocalDateTime ldt3 = ldt2.withMinute(curDate.getMinute());
-                        mViewModel.currentToDo.getValue().setDeadline(ldt3);
-
-
-//                        mViewModel.setDate(((Long)materialDatePicker.getSelection()).longValue());//.setText("Selected Date is : " + materialDatePicker.getHeaderText());
-                        // in the above statement, getHeaderText
-                        // is the selected date preview from the
-                        // dialog
+                        mViewModel.updateDate(((Long)materialDatePicker.getSelection()).longValue());
                     }
                 });
     }

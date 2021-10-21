@@ -38,7 +38,7 @@
             android:ems="10"
             android:hint="A short title"
             android:inputType="text|textCapSentences"
-            android:text="@={viewmodel.currentToDo.title}"
+            android:text="@{viewmodel.adrienneTodoTitle}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitleHeader" />
@@ -61,7 +61,7 @@
             android:inputType="textLongMessage"
             android:lines="5"
             android:singleLine="false"
-            android:text="@={viewmodel.currentToDo.description}"
+            android:text="@{viewmodel.todoDescription}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDetailHeader" />
@@ -84,7 +84,7 @@
             android:ems="10"
             android:hint="When does it need to be done?"
             android:inputType="date"
-            android:text="@{viewmodel.currentToDo.deadlineDayAsString}"
+            android:text="@{viewmodel.todoDateAsString}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewDateDeadlineHeader" />
@@ -116,7 +116,7 @@
             android:ems="10"
             android:hint="Is there a time it needs to be done by?"
             android:inputType="time"
-            android:text="@{viewmodel.currentToDo.deadlineTimeAsString}"
+            android:text="@{viewmodel.todoTimeAsString}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTimeDeadlineHeader" />
