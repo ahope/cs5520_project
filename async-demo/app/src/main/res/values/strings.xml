@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mod5Proj</string>
+    <string name="channel_name">cs5520_adrienne</string>
+    <string name="channel_description">This is the channel for publishing notifications for demo</string>
+</resources>
