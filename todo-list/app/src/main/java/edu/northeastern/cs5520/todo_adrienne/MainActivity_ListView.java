@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
 import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRecyclerViewAdapter;
 import edu.northeastern.cs5520.todo_adrienne.databinding.ActivityMainListViewBinding;
+import edu.northeastern.cs5520.todo_adrienne.reminders.NotificationManager;
+import edu.northeastern.cs5520.todo_adrienne.reminders.ToDoReminderManager;
 
 public class MainActivity_ListView extends AppCompatActivity {
 
@@ -47,5 +50,12 @@ public class MainActivity_ListView extends AppCompatActivity {
             }
         });
 
+        // Make sure we can surface notifications
+        NotificationManager.createNotificationChannel(getApplicationContext());
+
+        // Make sure
+        if (!ToDoReminderManager.isReminderSchedulerSet(getApplicationContext())) {
+            ToDoReminderManager.scheduleReminderScheduler(getApplicationContext());
+        }
     }
 }
