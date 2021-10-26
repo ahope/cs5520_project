@@ -3,6 +3,7 @@ package edu.northeastern.cs5520.todo_adrienne.data;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,16 @@ public class ToDoInMemoryDataSource implements IToDoDataSource{
     public int update(ToDo todo) {
         // TODO(ahs): Actually update a ToDo
         return 0;
+    }
+
+    @Override
+    public LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end) {
+        return null;
+    }
+
+    @Override
+    public LiveData<List<ToDo>> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+        return null;
     }
 
 

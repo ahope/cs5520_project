@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.room.Query;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Spliterator;
@@ -49,6 +51,14 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     public int update(ToDo updatedToDo) {
         return mToDoDataSource.update(updatedToDo);
+    }
+
+    public LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end) {
+        return  mToDoDataSource.getTodosDueInRange(start, end);
+    }
+
+    public LiveData<List<ToDo>> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+        return mToDoDataSource.getTodosToBeReminded(start, end);
     }
 
     public LiveData<ToDo> getToDoById(int id) {
