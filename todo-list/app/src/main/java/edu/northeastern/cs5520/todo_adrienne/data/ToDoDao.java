@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.TypeConverters;
 import androidx.room.Update;
 
 import java.time.LocalDate;
@@ -38,11 +39,13 @@ public interface ToDoDao {
 //   https://stackoverflow.com/questions/47199630/room-database-select-from-table-by-a-given-day
 //    @Query("SELECT * FROM table_name WHERE date BETWEEN :dayst AND :dayet")
 //    Object getFromTable(long dayst, long dayet);
+    @TypeConverters({TimestampConverter.class})
     @Query("SELECT * FROM todo_table WHERE deadline BETWEEN :start AND :end")
     LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end);
 
 
+    @TypeConverters({TimestampConverter.class})
     @Query("SELECT * FROM todo_table WHERE reminderDateTime BETWEEN :start AND :end")
-    LiveData<List<ToDo>> getTodosToBeReminded(LocalDateTime start, LocalDateTime end);
+    List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end);
 
 }

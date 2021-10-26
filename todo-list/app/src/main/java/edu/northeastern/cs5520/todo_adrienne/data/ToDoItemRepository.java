@@ -1,6 +1,7 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -20,15 +21,15 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     private static ToDoItemRepository singleton;
 
-    private ToDoItemRepository(Application application) {
+    private ToDoItemRepository(Context context) {
 //        mToDoDataSource = new ToDoInMemoryDataSource();
-        mToDoDataSource = new ToDoDbDataSource(application);
+        mToDoDataSource = new ToDoDbDataSource(context);
 //        this.createFakeData();
     }
 
-    public static ToDoItemRepository getSingleton(Application application) {
+    public static ToDoItemRepository getSingleton(Context context) {
         if (singleton == null) {
-            singleton = new ToDoItemRepository(application);
+            singleton = new ToDoItemRepository(context);
         }
         return singleton;
     }
@@ -57,7 +58,7 @@ public class ToDoItemRepository implements Iterable<ToDo>{
         return  mToDoDataSource.getTodosDueInRange(start, end);
     }
 
-    public LiveData<List<ToDo>> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+    public List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
         return mToDoDataSource.getTodosToBeReminded(start, end);
     }
 

@@ -26,4 +26,6 @@
     <string name="is_completed_info_placeholder">Yes or No</string>
     <string name="todo_edit_cancel_button_text">Cancel</string>
     <string name="todo_edit_save_button_text">Save</string>
+    <string name="channel_name">Adrienne\'s ToDo Reminder Notifications</string>
+    <string name="channel_description">Notifications for Adrienne\'s ToDo app, reminding you of things to get done!</string>
 </resources>

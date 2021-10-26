@@ -55,7 +55,7 @@ public class ToDoInMemoryDataSource implements IToDoDataSource{
     }
 
     @Override
-    public LiveData<List<ToDo>> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+    public List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
         return null;
     }
 
