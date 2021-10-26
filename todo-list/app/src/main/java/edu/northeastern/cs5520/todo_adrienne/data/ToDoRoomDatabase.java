@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {ToDo.class}, version = 3, exportSchema = false)
+@Database(entities = {ToDo.class}, version = 9, exportSchema = false)
 public abstract class ToDoRoomDatabase extends RoomDatabase {
 
     public abstract ToDoDao ToDoDao();
@@ -51,10 +51,10 @@ public abstract class ToDoRoomDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 ToDoDao dao = INSTANCE.ToDoDao();
-                dao.deleteAll();
-
-                dao.insert(ToDo.createTodo("Task todo 1", "do something, already"));
-                dao.insert(ToDo.createTodo("Task todo 2", "and another thign!"));
+//                dao.deleteAll();
+//
+//                dao.insert(ToDo.createTodo("Task todo 1", "do something, already"));
+//                dao.insert(ToDo.createTodo("Task todo 2", "and another thign!"));
             });
         }
     };

@@ -3,8 +3,6 @@ package edu.northeastern.cs5520.todo_adrienne;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.ListAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,7 @@ import edu.northeastern.cs5520.todo_adrienne.databinding.ActivityMainListViewBin
 
 public class MainActivity_ListView extends AppCompatActivity {
 
-    private ToDoViewModel mToDoViewModel;
+    private ToDoListViewModel toDoListViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +21,7 @@ public class MainActivity_ListView extends AppCompatActivity {
         // This is what we would do if we weren't using the ViewBinding (as we see below)
 //        setContentView(R.layout.activity_main_list_view);
         // Get a new or existing ViewModel from the ViewModelProvider.
-        mToDoViewModel = new ViewModelProvider(this).get(ToDoViewModel.class);
+        toDoListViewModel = new ViewModelProvider(this).get(ToDoListViewModel.class);
 
         // Use the ViewBinding instead of the layout directly
         ActivityMainListViewBinding binding = ActivityMainListViewBinding.inflate(getLayoutInflater());
@@ -34,7 +32,7 @@ public class MainActivity_ListView extends AppCompatActivity {
         final ToDoItemRecyclerViewAdapter adapter =
                 new ToDoItemRecyclerViewAdapter(new ToDoItemRecyclerViewAdapter.TodoDiff());
 
-        mToDoViewModel.getAllToDos().observe(this, todos -> {
+        toDoListViewModel.getAllToDos().observe(this, todos -> {
            adapter.submitList(todos);
         });
 

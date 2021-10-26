@@ -3,6 +3,7 @@ package edu.northeastern.cs5520.todo_adrienne.data;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
@@ -37,6 +38,22 @@ public class ToDoDbDataSource implements IToDoDataSource{
     @Override
     public LiveData<List<ToDo>> getNTodos(int n) {
         return mToDoDao.getNTodos(n);
+    }
+
+    @Override
+    public LiveData<ToDo> getToDoById(int id) {
+        return mToDoDao.getToDoById(id);
+    }
+
+    @Override
+    public int update(ToDo todo){
+//        return mToDoDao.update(todo);
+
+        ToDoRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mToDoDao.update(todo);
+        });
+
+        return 0;
     }
 
 }

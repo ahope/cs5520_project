@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +21,7 @@ public class ToDoItemRepository implements Iterable<ToDo>{
     private ToDoItemRepository(Application application) {
 //        mToDoDataSource = new ToDoInMemoryDataSource();
         mToDoDataSource = new ToDoDbDataSource(application);
-        this.createFakeData();
+//        this.createFakeData();
     }
 
     public static ToDoItemRepository getSingleton(Application application) {
@@ -43,6 +45,24 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     public void addToDo(ToDo newToDo) {
         mToDoDataSource.insert(newToDo);
+    }
+
+    public int update(ToDo updatedToDo) {
+        return mToDoDataSource.update(updatedToDo);
+    }
+
+    public LiveData<ToDo> getToDoById(int id) {
+//        MutableLiveData<ToDo> result = new MutableLiveData<>();
+//
+//        LiveData<ToDo> fromRepo = mToDoDataSource.getToDoById(id);
+//        fromRepo.observe(this, new Observer<ToDo>() {
+//            @Override
+//            public void onChanged(ToDo toDo) {
+//                result.postValue(toDo);
+//            }
+//        });
+//        return result;
+        return mToDoDataSource.getToDoById(id);
     }
 
     private void createFakeData() {

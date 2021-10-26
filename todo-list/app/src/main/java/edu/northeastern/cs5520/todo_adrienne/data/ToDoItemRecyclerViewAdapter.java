@@ -33,8 +33,10 @@ public class ToDoItemRecyclerViewAdapter extends ListAdapter<ToDo, ToDoItemViewH
     @Override
     public void onBindViewHolder(@NonNull ToDoItemViewHolder holder, int position) {
         // This is how we bind the UI to a specific task
-        holder.bind(getItem(position));
+        holder.bind(getItem(position), position);
+
     }
+
 
 
 
