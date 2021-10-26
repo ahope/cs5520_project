@@ -10,4 +10,20 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_heading">A Short Title</string>
+    <string name="edit_title_hint">A short title</string>
+    <string name="details_heading">More Details</string>
+    <string name="edit_details_hint">Some more details</string>
+    <string name="deadline_date_heading">Deadline date</string>
+    <string name="edit_deadline_date_hint">When does it need to be done?</string>
+    <string name="choose_date_button_text">Choose Date</string>
+    <string name="deadline_time_heading">Deadline time</string>
+    <string name="edit_deadline_time_hint">Is there a time it needs to be done by?</string>
+    <string name="choose_time_button_text">Choose Time</string>
+    <string name="reminder_info_heading">Reminder Info</string>
+    <string name="default_reminder_info_text">This task will be reminded 1 time, 1 hour before it\'s due.</string>
+    <string name="is_completed_info_heading">Is Completed Info</string>
+    <string name="is_completed_info_placeholder">Yes or No</string>
+    <string name="todo_edit_cancel_button_text">Cancel</string>
+    <string name="todo_edit_save_button_text">Save</string>
 </resources>

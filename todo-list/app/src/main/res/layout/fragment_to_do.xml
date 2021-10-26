@@ -8,7 +8,6 @@
 
     <data>
         <import type="android.view.View" />
-
         <variable
             name="viewmodel"
             type="edu.northeastern.cs5520.todo_adrienne.ToDoViewModel" />
@@ -31,7 +30,6 @@
             android:background="?attr/colorControlHighlight"
             android:orientation="vertical"
             android:padding="3dp"
-            android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -41,14 +39,14 @@
                 style="@style/TextView.ToDoHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A Short Title" />
+                android:text="@string/title_heading" />
 
             <EditText
                 android:id="@+id/editTextTodoTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="A short title"
+                android:hint="@string/edit_title_hint"
                 android:inputType="text|textCapSentences"
                 android:text="@{viewmodel.adrienneTodoTitle}" />
         </LinearLayout>
@@ -58,7 +56,7 @@
             android:id="@+id/layoutDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/todo_chunk_margin_top"
             android:background="?attr/colorControlHighlight"
             android:orientation="vertical"
             android:padding="3dp"
@@ -71,7 +69,7 @@
                 style="@style/TextView.ToDoHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="More Details" />
+                android:text="@string/details_heading" />
 
 
             <EditText
@@ -79,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Some more details"
+                android:hint="@string/edit_details_hint"
                 android:inputType="textLongMessage"
                 android:lines="5"
                 android:singleLine="false"
@@ -93,7 +91,7 @@
             android:id="@+id/layoutDeadline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/todo_chunk_margin_top"
             android:background="?attr/colorControlHighlight"
             android:orientation="vertical"
             android:padding="3dp"
@@ -106,47 +104,38 @@
                 style="@style/TextView.ToDoHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deadline date" />
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/editTextTodoDetail" />-->
+                android:text="@string/deadline_date_heading" />
 
             <TextView
                 android:id="@+id/editTextTodoDeadlineDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
                 android:ems="10"
-                android:hint="When does it need to be done?"
+                android:hint="@string/edit_deadline_date_hint"
                 android:inputType="date"
                 android:text="@{viewmodel.todoDateAsString}" />
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/textViewDateDeadlineHeader" />-->
 
             <Button
                 android:id="@+id/buttonChooseDate"
                 style="@android:style/Widget.Material.Light.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose Date" />
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/editTextTodoDeadlineDate" />-->
+                android:text="@string/choose_date_button_text" />
+
 
             <TextView
                 android:id="@+id/textViewTimeDeadlineHeader"
                 style="@style/TextView.ToDoHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deadline time" />
+                android:text="@string/deadline_time_heading" />
 
             <TextView
                 android:id="@+id/editTextTodoDeadlineTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Is there a time it needs to be done by?"
+                android:hint="@string/edit_deadline_time_hint"
                 android:inputType="time"
                 android:text="@{viewmodel.todoTimeAsString}" />
 
@@ -156,7 +145,7 @@
                 style="@android:style/Widget.Material.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Choose Time" />
+                android:text="@string/choose_time_button_text" />
 
 
         </LinearLayout>
@@ -165,7 +154,7 @@
             android:id="@+id/textViewReminderHeader"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="Reminder Info"
+            android:text="@string/reminder_info_heading"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutDeadline" />
@@ -174,7 +163,7 @@
             android:id="@+id/checkedTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This task will be reminded 1 time, 1 hour before it's due. "
+            android:text="@string/default_reminder_info_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewReminderHeader" />
@@ -183,7 +172,7 @@
             android:id="@+id/textViewIsCompletedHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Is Completed Info"
+            android:text="@string/is_completed_info_heading"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +182,7 @@
             android:id="@+id/textViewIsCompletedValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes or No"
+            android:text="@string/is_completed_info_placeholder"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +192,7 @@
             android:id="@+id/buttonCancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/todo_edit_cancel_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -215,7 +204,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:onClick="createTodo"
-            android:text="Save"
+            android:text="@string/todo_edit_save_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="1"
