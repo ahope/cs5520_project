@@ -8,5 +8,7 @@
     <style name="TextView.ToDoHeading" parent="">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">#FFFFFF</item>
     </style>
 </resources>
