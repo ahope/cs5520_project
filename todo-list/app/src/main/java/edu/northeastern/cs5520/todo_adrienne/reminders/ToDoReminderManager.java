@@ -9,8 +9,13 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
+import java.time.Duration;
 import java.time.ZoneOffset;
+import java.util.concurrent.TimeUnit;
 
 import edu.northeastern.cs5520.todo_adrienne.NewToDoActivity;
 import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
@@ -56,11 +61,32 @@ public class ToDoReminderManager {
 
     }
 
+    public static void scheduleReminderWorker(Context appContext) {
+        Log.i(TAG, "Scheduling the reminder for the WorkManager");
+
+        WorkManager manager = WorkManager.getInstance(appContext);
+        PeriodicWorkRequest request =
+               new PeriodicWorkRequest.Builder(
+                       ScheduleReminderNotificationsWorker.class,
+                       15, // Must be at least 15 minutes
+                       TimeUnit.MINUTES)
+                       .addTag("reminderScheduler_1")
+                       .build();
+
+
+        manager.enqueueUniquePeriodicWork("reminderScheduler",
+                ExistingPeriodicWorkPolicy.REPLACE,
+                request); //(request); //OneTimeWorkRequest.from(BlurWorker.class));
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void scheduleNotificationForTodo(Context appContext, AlarmManager alarmManager, ToDo todo) {
-        Log.i(TAG, "Scheduling notification for tod ");
+    public static void scheduleNotificationForTodo(Context appContext, ToDo todo) {
+        Log.i(TAG, "Scheduling notification for todo ");
         Intent doReminderNotificationIntent = new Intent(appContext, DoReminderNotificationReceiver.class);
         doReminderNotificationIntent.putExtra(DoReminderNotificationReceiver.EXTRA_KEY_TODO_ID, todo.getId());
+        doReminderNotificationIntent.putExtra(DoReminderNotificationReceiver.EXTRA_KEY_TODO_TITLE, todo.getTitle());
+
         PendingIntent schedulerPendingIntent = PendingIntent.getBroadcast
                 (appContext,
                         DO_REMINDER_NOTIFICATION_ID,
@@ -68,9 +94,13 @@ public class ToDoReminderManager {
                         PendingIntent.FLAG_UPDATE_CURRENT);
 
         long triggerTime = todo.getReminderDateTime().toEpochSecond(ZoneOffset.UTC);
+        Log.i(TAG, "triggerTime: " + triggerTime);
+
+
+        AlarmManager alarmManager = (AlarmManager) appContext.getSystemService(Context.ALARM_SERVICE);
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,
-                        triggerTime,
+                        System.currentTimeMillis() + 5000, //triggerTime,
                         schedulerPendingIntent);
     }
 

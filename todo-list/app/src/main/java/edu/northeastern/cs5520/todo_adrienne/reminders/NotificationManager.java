@@ -18,9 +18,11 @@ public class NotificationManager {
 
     private static final String CHANNEL_ID = "todoReminderChannel";
 
+    private static final String GROUP_KEY_REMINDERS = "edu.northeastern.cs5520.todo_adrienne.TODO_REMINDERS";
+
     private static String TAG = NotificationManager.class.toString();
 
-    public static void sendNotification(Context context, int toDoId){
+    public static void sendNotification(Context context, int toDoId, String todoTitle){
         // Prepare intent which is triggered if the
         // notification is selected
         Intent intent = new Intent(context, NewToDoActivity.class);
@@ -43,9 +45,10 @@ public class NotificationManager {
         } else {
             notificationBuilder = new Notification.Builder(context, CHANNEL_ID)
                     .setSmallIcon(R.drawable.foo)
-                    .setContentTitle("Adrienne's Simple Notification")
-                    .setContentText("Subject:")
-                    .setAutoCancel(true)
+                    .setContentTitle("You have something to do!")
+                    .setContentText(todoTitle)
+                    .setAutoCancel(false)
+                    .setGroup(GROUP_KEY_REMINDERS)
                     .setContentIntent(pIntent);
         }
 
