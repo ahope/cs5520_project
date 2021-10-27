@@ -21,4 +21,5 @@ task clean(type: Delete) {
 ext {
     // Room components
     roomVersion = "2.3.0"
+    workVersion = "2.5.0"
 }
