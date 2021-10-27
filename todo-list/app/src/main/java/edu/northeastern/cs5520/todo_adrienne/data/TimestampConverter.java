@@ -62,7 +62,7 @@ public class TimestampConverter {
             LocalDateTime thing;
             try {
 //                thing = LocalDateTime.from(localDateTimeFormatter.parse(value));
-                thing = LocalDateTime.from(localDateTimeFormatter.parse(value));
+                thing = LocalDateTime.from(isoDateTimeFormatter.parse(value));
             } catch(Exception e) {
                 thing = null;
             }

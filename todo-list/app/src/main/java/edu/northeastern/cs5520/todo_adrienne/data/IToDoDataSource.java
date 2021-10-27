@@ -23,4 +23,5 @@ public interface IToDoDataSource {
     LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end);
 
     List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end);
+    LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end);
 }

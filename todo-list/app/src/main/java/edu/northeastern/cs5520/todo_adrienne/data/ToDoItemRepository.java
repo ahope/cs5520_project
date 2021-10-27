@@ -62,6 +62,10 @@ public class ToDoItemRepository implements Iterable<ToDo>{
         return mToDoDataSource.getTodosToBeReminded(start, end);
     }
 
+    public LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end) {
+        return mToDoDataSource.getTodosToBeRemindedEventually(start, end);
+    }
+
     public LiveData<ToDo> getToDoById(int id) {
 //        MutableLiveData<ToDo> result = new MutableLiveData<>();
 //

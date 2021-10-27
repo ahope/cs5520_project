@@ -48,4 +48,9 @@ public interface ToDoDao {
     @Query("SELECT * FROM todo_table WHERE reminderDateTime BETWEEN :start AND :end")
     List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end);
 
+
+    @TypeConverters({TimestampConverter.class})
+    @Query("SELECT * FROM todo_table WHERE reminderDateTime BETWEEN :start AND :end")
+    LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end);
+
 }

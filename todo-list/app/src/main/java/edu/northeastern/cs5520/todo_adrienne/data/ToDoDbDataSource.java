@@ -68,4 +68,8 @@ public class ToDoDbDataSource implements IToDoDataSource{
         return mToDoDao.getTodosToBeReminded(start, end);
     }
 
+    @Override
+    public LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end) {
+        return mToDoDao.getTodosToBeRemindedEventually(start, end);
+    }
 }
