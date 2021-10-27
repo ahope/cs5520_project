@@ -32,11 +32,13 @@ public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
+
     }
 
     public void bind(ToDo toDo, int position) {
         mToDoId = toDo.getId();
         mPosition = position;
+        binding.isCompletedCheckBox.setChecked(toDo.isCompleted());
         binding.setTodoDetail(toDo.getDescription());
         binding.setTodoTitle(toDo.getTitle());
         binding.setTodoTask(toDo);

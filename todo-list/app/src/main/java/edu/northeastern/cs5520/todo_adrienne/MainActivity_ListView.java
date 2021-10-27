@@ -1,11 +1,14 @@
 package edu.northeastern.cs5520.todo_adrienne;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
@@ -17,6 +20,7 @@ import edu.northeastern.cs5520.todo_adrienne.reminders.ToDoReminderManager;
 public class MainActivity_ListView extends AppCompatActivity {
 
     private ToDoListViewModel toDoListViewModel;
+    private ToDoItemRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class MainActivity_ListView extends AppCompatActivity {
         binding.recyclerViewMain.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerViewMain.scrollToPosition(0);
 
-        final ToDoItemRecyclerViewAdapter adapter =
+        adapter =
                 new ToDoItemRecyclerViewAdapter(new ToDoItemRecyclerViewAdapter.TodoDiff());
 
         toDoListViewModel.getAllToDos().observe(this, todos -> {
@@ -54,8 +58,49 @@ public class MainActivity_ListView extends AppCompatActivity {
         NotificationManager.createNotificationChannel(getApplicationContext());
 
         // Make sure
-        if (!ToDoReminderManager.isReminderSchedulerSet(getApplicationContext())) {
-            ToDoReminderManager.scheduleReminderScheduler(getApplicationContext());
-        }
+//        if (!ToDoReminderManager.isReminderSchedulerSet(getApplicationContext())) {
+//            ToDoReminderManager.scheduleReminderScheduler(getApplicationContext());
+//        }
+        ToDoReminderManager.scheduleReminderWorker(getApplicationContext());
+
+        setSupportActionBar(binding.myToolbar);
     }
+
+    /**
+     * Inflates the menu, and adds items to the action bar if it is present.
+     *
+     * @param menu Menu to inflate.
+     * @return Returns true if the menu inflated.
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuCompat.setGroupDividerEnabled(menu, true);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_sort) {
+            return true;
+        }
+
+        switch (id) {
+            case R.id.action_sort_ascending:
+            case R.id.action_sort_descending:
+            case R.id.action_sort_by_completed:
+            case R.id.action_sort_by_deadline:
+            case R.id.action_sort_by_title:
+                item.setChecked(!item.isChecked());
+                adapter.sortByDeadlineAscending();
+                return true;
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

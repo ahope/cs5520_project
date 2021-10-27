@@ -28,4 +28,11 @@
     <string name="todo_edit_save_button_text">Save</string>
     <string name="channel_name">Adrienne\'s ToDo Reminder Notifications</string>
     <string name="channel_description">Notifications for Adrienne\'s ToDo app, reminding you of things to get done!</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_sort">Sort</string>
+    <string name="action_sort_by_deadline_text">Deadline</string>
+    <string name="action_sort_by_completed_text">Completed</string>
+    <string name="action_sort_by_title_text">Title</string>
+    <string name="action_sort_ascending_text">Ascending</string>
+    <string name="action_sort_descending_text">Descending</string>
 </resources>
