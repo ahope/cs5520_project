@@ -25,7 +25,6 @@ public class SendNotificationActivity extends AppCompatActivity {
         createNotificationChannel();
     }
 
-
     public void sendNotification(View view){
         // Prepare intent which is triggered if the
         // notification is selected

@@ -241,6 +241,7 @@ public class WebServiceActivity extends AppCompatActivity {
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
 
+            // DO NOT DO THIS!!! This is bad, on my behalf. Why??
             conn.setRequestProperty("Authorization", "Basic YTdhNDY5NDkxNDgzNGY5NDk4YmI1NzU1Zjg3NjA5MDU6ODVjMTljNmFhMzAzNDNhM2E1ZDk5NGUxYzBjYWZhYjI=");
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     //        conn.setRequestProperty();
