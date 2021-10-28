@@ -1,7 +1,53 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.northeastern.cs5520.todo_adrienne.MainActivity">
+    tools:context="edu.northeastern.cs5520.todo_adrienne.MainActivity_ListView">
+
+    <item
+        android:id="@+id/action_filter"
+        android:orderInCategory="10"
+        android:title="@string/action_filter"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sort"
+        android:orderInCategory="20"
+        android:title="@string/action_sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group
+                android:checkableBehavior="single"
+                android:id="@+id/action_sort_ordering">
+                <item android:id="@+id/action_sort_ascending"
+                    android:title="@string/action_sort_ascending_text"
+                    android:checked="true"/>
+                <item android:id="@+id/action_sort_descending"
+                    android:title="@string/action_sort_descending_text" />
+            </group>
+            <group
+                android:checkableBehavior="single"
+                android:id="@+id/action_sort_field">
+            <item
+                android:id="@+id/action_sort_by_deadline"
+                android:orderInCategory="20"
+                android:title="@string/action_sort_by_deadline_text"
+                app:showAsAction="ifRoom"
+                android:checked="true"/>
+
+            <item
+                android:id="@+id/action_sort_by_completed"
+                android:orderInCategory="20"
+                android:title="@string/action_sort_by_completed_text"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:id="@+id/action_sort_by_title"
+                android:orderInCategory="20"
+                android:title="@string/action_sort_by_title_text"
+                app:showAsAction="ifRoom" />
+            </group>
+        </menu>
+    </item>
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

@@ -1,10 +1,12 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import edu.northeastern.cs5520.todo_adrienne.ToDoApplication;
@@ -13,8 +15,8 @@ public class ToDoDbDataSource implements IToDoDataSource{
 
     private ToDoDao mToDoDao;
 
-    public ToDoDbDataSource(Application application) {
-        ToDoRoomDatabase db = ToDoRoomDatabase.getDatabase(application);
+    public ToDoDbDataSource(Context context) {
+        ToDoRoomDatabase db = ToDoRoomDatabase.getDatabase(context);
         mToDoDao = db.ToDoDao();
     }
 
@@ -56,4 +58,18 @@ public class ToDoDbDataSource implements IToDoDataSource{
         return 0;
     }
 
+    @Override
+    public LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end) {
+        return  mToDoDao.getTodosDueInRange(start, end);
+    }
+
+    @Override
+    public List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+        return mToDoDao.getTodosToBeReminded(start, end);
+    }
+
+    @Override
+    public LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end) {
+        return mToDoDao.getTodosToBeRemindedEventually(start, end);
+    }
 }

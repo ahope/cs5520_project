@@ -17,6 +17,7 @@ public class TimestampConverter {
 
     public static DateFormat format  = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     public static DateTimeFormatter localDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static DateTimeFormatter isoDateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 //    DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
 
     @TypeConverter
@@ -46,7 +47,8 @@ public class TimestampConverter {
     @TypeConverter
     public static String fromLocalDateTime(LocalDateTime value) {
         if (value != null) {
-            return value.format(localDateTimeFormatter);
+//            return value.format(localDateTimeFormatter);
+            return value.format(isoDateTimeFormatter);
         } else {
             return "";
         }
@@ -59,7 +61,8 @@ public class TimestampConverter {
                 return LocalDateTime.now();
             LocalDateTime thing;
             try {
-                thing = LocalDateTime.from(localDateTimeFormatter.parse(value));
+//                thing = LocalDateTime.from(localDateTimeFormatter.parse(value));
+                thing = LocalDateTime.from(isoDateTimeFormatter.parse(value));
             } catch(Exception e) {
                 thing = null;
             }

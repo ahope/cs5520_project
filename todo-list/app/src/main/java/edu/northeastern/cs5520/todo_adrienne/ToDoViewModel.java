@@ -79,11 +79,14 @@ public class ToDoViewModel extends AndroidViewModel {
         return todoCreated;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void persistCurrentToDo() {
         ToDo updatedToDo = todo.getValue();
         updatedToDo.setTitle(_todoTitle.getValue());
         updatedToDo.setDescription(_todoDescription.getValue());
         updatedToDo.setDeadline(_date.getValue());
+
+        updatedToDo.setReminderDateTime(_date.getValue().minusHours(1l));
 
         if (todoId.getValue() < 0) {
             repository.addToDo(updatedToDo);

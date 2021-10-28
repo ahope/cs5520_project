@@ -1,12 +1,15 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.room.Query;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Spliterator;
@@ -18,15 +21,15 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     private static ToDoItemRepository singleton;
 
-    private ToDoItemRepository(Application application) {
+    private ToDoItemRepository(Context context) {
 //        mToDoDataSource = new ToDoInMemoryDataSource();
-        mToDoDataSource = new ToDoDbDataSource(application);
+        mToDoDataSource = new ToDoDbDataSource(context);
 //        this.createFakeData();
     }
 
-    public static ToDoItemRepository getSingleton(Application application) {
+    public static ToDoItemRepository getSingleton(Context context) {
         if (singleton == null) {
-            singleton = new ToDoItemRepository(application);
+            singleton = new ToDoItemRepository(context);
         }
         return singleton;
     }
@@ -49,6 +52,18 @@ public class ToDoItemRepository implements Iterable<ToDo>{
 
     public int update(ToDo updatedToDo) {
         return mToDoDataSource.update(updatedToDo);
+    }
+
+    public LiveData<List<ToDo>> getTodosDueInRange(LocalDateTime start, LocalDateTime end) {
+        return  mToDoDataSource.getTodosDueInRange(start, end);
+    }
+
+    public List<ToDo> getTodosToBeReminded(LocalDateTime start, LocalDateTime end) {
+        return mToDoDataSource.getTodosToBeReminded(start, end);
+    }
+
+    public LiveData<List<ToDo>> getTodosToBeRemindedEventually(LocalDateTime start, LocalDateTime end) {
+        return mToDoDataSource.getTodosToBeRemindedEventually(start, end);
     }
 
     public LiveData<ToDo> getToDoById(int id) {

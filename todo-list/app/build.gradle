@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "edu.northeastern.cs5520.mainactivity"
-        minSdk 24
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -54,4 +54,6 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
 
+    // WorkManager dependency
+    implementation "androidx.work:work-runtime:$rootProject.workVersion"
 }

@@ -1,6 +1,9 @@
 package edu.northeastern.cs5520.todo_adrienne.data;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,15 +31,26 @@ public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Intent intent = new Intent(binding.getRoot().getContext(), NewToDoActivity.class);
                 intent.putExtra(NewToDoActivity.EXTRA_KEY_TODO_ID, mToDoId);
-                binding.getRoot().getContext().startActivity(intent);
+                ActivityOptions options =
+                        ActivityOptions.makeSceneTransitionAnimation((Activity)binding.getRoot().getContext(),
+                                view, "");
+                binding.getRoot().getContext().startActivity(intent,
+                        options.toBundle());
+
             }
         });
-
     }
 
     public void bind(ToDo toDo, int position) {
         mToDoId = toDo.getId();
         mPosition = position;
+        binding.isCompletedCheckBox.setChecked(toDo.isCompleted());
+        if (toDo.isCompleted()){
+//            int color = getColor(R.color.secondaryDarkColor)
+            binding.todoItemHolderLayout.setBackgroundColor(Color.LTGRAY);
+        } else {
+            binding.todoItemHolderLayout.setBackgroundColor(Color.WHITE);
+        }
         binding.setTodoDetail(toDo.getDescription());
         binding.setTodoTitle(toDo.getTitle());
         binding.setTodoTask(toDo);
