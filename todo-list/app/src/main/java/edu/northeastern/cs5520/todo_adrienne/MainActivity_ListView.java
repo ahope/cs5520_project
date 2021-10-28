@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import edu.northeastern.cs5520.todo_adrienne.data.ToDo;
 import edu.northeastern.cs5520.todo_adrienne.data.ToDoItemRecyclerViewAdapter;
@@ -25,6 +27,10 @@ public class MainActivity_ListView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        // set an exit transition
+        getWindow().setExitTransition(new Explode());
+
         // This is what we would do if we weren't using the ViewBinding (as we see below)
 //        setContentView(R.layout.activity_main_list_view);
         // Get a new or existing ViewModel from the ViewModelProvider.
@@ -64,6 +70,9 @@ public class MainActivity_ListView extends AppCompatActivity {
         ToDoReminderManager.scheduleReminderWorker(getApplicationContext());
 
         setSupportActionBar(binding.myToolbar);
+
+        // inside your activity (if you did not enable transitions in your theme)
+
     }
 
     /**
