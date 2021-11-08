@@ -35,4 +35,10 @@
     <string name="action_sort_by_title_text">Title</string>
     <string name="action_sort_ascending_text">Ascending</string>
     <string name="action_sort_descending_text">Descending</string>
+
+
+    <string name="primary_color">Primary color</string>
+    <string name="button">Button</string>
+    <string name="secondary_color">Secondary color</string>
+    <string name="email_icon">email icon</string>
 </resources>

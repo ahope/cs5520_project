@@ -14,6 +14,7 @@ import edu.northeastern.cs5520.todo_adrienne.MainActivity_ListView;
 import edu.northeastern.cs5520.todo_adrienne.NewToDoActivity;
 import edu.northeastern.cs5520.todo_adrienne.R;
 import edu.northeastern.cs5520.todo_adrienne.databinding.ToDoItemViewBinding;
+import edu.northeastern.cs5520.todo_adrienne.events.ToDoListItemListener;
 
 public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -26,34 +27,34 @@ public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
         super(binding.getRoot());
         this.binding = binding;
 
-        this.binding.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(binding.getRoot().getContext(), NewToDoActivity.class);
-                intent.putExtra(NewToDoActivity.EXTRA_KEY_TODO_ID, mToDoId);
-                ActivityOptions options =
-                        ActivityOptions.makeSceneTransitionAnimation((Activity)binding.getRoot().getContext(),
-                                view, "");
-                binding.getRoot().getContext().startActivity(intent,
-                        options.toBundle());
-
-            }
-        });
+//        this.binding.getRoot().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(binding.getRoot().getContext(), NewToDoActivity.class);
+//                intent.putExtra(NewToDoActivity.EXTRA_KEY_TODO_ID, mToDoId);
+//                ActivityOptions options =
+//                        ActivityOptions.makeSceneTransitionAnimation((Activity)binding.getRoot().getContext(),
+//                                view, "");
+//                binding.getRoot().getContext().startActivity(intent,
+//                        options.toBundle());
+//
+//            }
+//        });
     }
 
     public void bind(ToDo toDo, int position) {
         mToDoId = toDo.getId();
         mPosition = position;
         binding.isCompletedCheckBox.setChecked(toDo.isCompleted());
-        if (toDo.isCompleted()){
-//            int color = getColor(R.color.secondaryDarkColor)
-            binding.todoItemHolderLayout.setBackgroundColor(Color.LTGRAY);
-        } else {
-            binding.todoItemHolderLayout.setBackgroundColor(Color.WHITE);
-        }
-        binding.setTodoDetail(toDo.getDescription());
-        binding.setTodoTitle(toDo.getTitle());
+//        if (toDo.isCompleted()){
+////            int color = getColor(R.color.secondaryDarkColor)
+//            binding.todoItemHolderLayout.setBackgroundColor(Color.LTGRAY);
+//        } else {
+//            binding.todoItemHolderLayout.setBackgroundColor(Color.WHITE);
+//        }
+
         binding.setTodoTask(toDo);
+        binding.setListener(new ToDoListItemListener());
         binding.executePendingBindings();
     }
 
