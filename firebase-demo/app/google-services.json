@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "137296038255",
+    "firebase_url": "https://lecture6-b5de9.firebaseio.com",
+    "project_id": "lecture6-b5de9",
+    "storage_bucket": "lecture6-b5de9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137296038255:android:8cea03d3ea0f3676",
+        "android_client_info": {
+          "package_name": "edu.neu.madcourse.lecture6.firebasedemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137296038255-c3108aqk0qhfcoc1ge3ng9js1jqi29lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsOWuB4eMEw1hZp9DGWTKWfnjdE_X0L_E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
