@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.neu.cs5520.location.locationupdates">
+
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+</manifest>
