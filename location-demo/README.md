@@ -17,8 +17,8 @@ This demo focuses on primarily 3 things:
 
 There are a few side-issues that are relevant as well: 
 
-* (Using the emulator for evaluating location apps)[emulator_location.md]
-* (Dangerous permissions on Android)[permissions.md]
+* [Using the emulator for evaluating location apps](emulator_location.md)
+* [Dangerous permissions on Android](permissions.md)
 
 
 
