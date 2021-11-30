@@ -68,7 +68,7 @@ is where we specify our priorities-- accuracy/frequency versus saving the batter
 Since getting a location can be a time consuming process, it MUST be asynchronous: The callback is 
 what handles the location result once it's been determined. In our case, all we're doing is pulling 
 out the location, when the location was taken, and updating the UI to reflect it. (You see this in 
-```MainActivity.createLocationCallback()``). 
+```MainActivity.createLocationCallback()```). 
 
 
 
@@ -77,7 +77,7 @@ out the location, when the location was taken, and updating the UI to reflect it
 Lat/lngs are nice and easy for thinking about a location on the globe, but as humans we aren't 
 very good at making meaning of lat/lng, unless they are visualized on a map. One way we can make 
 lat/lng locations more useful is to use a Geocoding service to translate the lat/lng into an 
-address. From that address, we might use a street addres, or maybe even parts of the address, such 
+address. From that address, we might use a street address, or maybe even parts of the address, such 
 as the city or state. 
 
 We show the use of the geocoding service in MainActivity and ```FetchAddressIntentService```.
