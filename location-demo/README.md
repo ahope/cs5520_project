@@ -1,14 +1,13 @@
 # Location Updates
-================
 
-Demonstrates how to use the Fused Location Provider API to get updates about a
-device's location. The Fused Location Provider is part of the Google Play
-services Location APIs.
+Demonstrates how to use the [Fused Location Provider API](https://developers.google.com/location-context/fused-location-provider) 
+to get updates about a
+device's location. The Fused Location Provider is part of the [Google Play
+services](https://developers.google.com/android/guides/overview) Location APIs.
 
 
 
 # Introduction
-============
 
 This demo focuses on primarily 3 things: 
 
@@ -18,8 +17,8 @@ This demo focuses on primarily 3 things:
 
 There are a few side-issues that are relevant as well: 
 
-* Using the emulator for evaluating location apps
-* Dangerous permissions on Android
+* (Using the emulator for evaluating location apps)[emulator_location.md]
+* (Dangerous permissions on Android)[permissions.md]
 
 
 
@@ -43,22 +42,9 @@ To run this sample, **location must be enabled**.
 
 
 
-License
--------
+# License
 
-Copyright 2014 Google, Inc.
+This demo was adapted from [Google's Location API](https://github.com/googlesamples/android-play-location/issues) 
+demos. 
 
-Licensed to the Apache Software Foundation (ASF) under one or more contributor
-license agreements.  See the NOTICE file distributed with this work for
-additional information regarding copyright ownership.  The ASF licenses this
-file to you under the Apache License, Version 2.0 (the "License"); you may not
-use this file except in compliance with the License.  You may obtain a copy of
-the License at
 
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
-License for the specific language governing permissions and limitations under
-the License.
