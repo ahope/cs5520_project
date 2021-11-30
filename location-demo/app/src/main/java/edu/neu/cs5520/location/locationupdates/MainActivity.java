@@ -233,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
      * updates.
      */
     private void createLocationRequest() {
+        /*
         mLocationRequest = new LocationRequest();
 
         // Sets the desired interval for active location updates. This interval is
@@ -246,7 +247,13 @@ public class MainActivity extends AppCompatActivity {
         mLocationRequest.setFastestInterval(Constants.FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
 
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        */
 
+        mLocationRequest = LocationRequest
+                .create()
+                .setInterval(Constants.UPDATE_INTERVAL_IN_MILLISECONDS)
+                .setFastestInterval(Constants.FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS)
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
     /**

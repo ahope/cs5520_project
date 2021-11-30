@@ -1,4 +1,4 @@
-Location Updates
+# Location Updates
 ================
 
 Demonstrates how to use the Fused Location Provider API to get updates about a
@@ -6,8 +6,22 @@ device's location. The Fused Location Provider is part of the Google Play
 services Location APIs.
 
 
-Introduction
+
+# Introduction
 ============
+
+This demo focuses on primarily 3 things: 
+
+* Requesting location updates from the ```FusedLocationProvider```
+* Getting permission to use location
+* Getting an address from a lat/lng
+
+There are a few side-issues that are relevant as well: 
+
+* Using the emulator for evaluating location apps
+* Dangerous permissions on Android
+
+
 
 This sample builds on the BasicLocationSample sample included in this repo,
 and allows the user to request periodic location updates. In response, the API
@@ -23,30 +37,11 @@ This sample uses the
 
 To run this sample, **location must be enabled**.
 
+# 
 
-Prerequisites
---------------
 
-- Android API Level >v9
-- Android Build Tools >v21
-- Google Support Repository
 
-Getting Started
----------------
 
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
-
-Support
--------
-
-- Stack Overflow: http://stackoverflow.com/questions/tagged/google-play-services
-
-If you've found an error in this sample, please file an issue:
-https://github.com/googlesamples/android-play-location/issues
-
-Patches are encouraged, and may be submitted according to the instructions in
-CONTRIBUTING.md.
 
 License
 -------
