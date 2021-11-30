@@ -4,6 +4,10 @@ Apps using location can be challenging to debug in the emulator, since you're no
 But, you can have the emulator, well, emulate location by providing it a file with some locations 
 in it. 
 
+**PLEASE NOTE:** Your emulator must have the Google Play APIs installed. You choose this when creating 
+your emulator. It usually shows "(Play Store)" in the name, and shows "Google Play" rather than 
+"Google APIs". 
+
 I've provided a file [locations.gpx](locations.gpx) that has a series of locations marked up in a 
 special flavor of xml called gpx. To use it, in your emulator,  click the "Extended Controls" button 
 (the three dots). In the Location tab, click the "Import GPX/KML" button. Then, load the locations.gpx 
